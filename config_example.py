@@ -1,5 +1,5 @@
 """
-    jumpserver.config
+    oms.config
     ~~~~~~~~~~~~~~~~~
 
     Jumpserver project setting file
@@ -38,9 +38,9 @@ class Config:
     # DB_ENGINE = os.environ.get("DB_ENGINE") or 'mysql'
     # DB_HOST = os.environ.get("DB_HOST") or '127.0.0.1'
     # DB_PORT = os.environ.get("DB_PORT") or 3306
-    # DB_USER = os.environ.get("DB_USER") or 'jumpserver'
+    # DB_USER = os.environ.get("DB_USER") or 'oms'
     # DB_PASSWORD = os.environ.get("DB_PASSWORD") or 'weakPassword'
-    # DB_NAME = os.environ.get("DB_NAME") or 'jumpserver'
+    # DB_NAME = os.environ.get("DB_NAME") or 'oms'
 
     # When Django start it will bind this host and port
     # ./manage.py runserver 127.0.0.1:8080

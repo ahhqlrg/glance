@@ -13,7 +13,7 @@ if os.path.exists('../apps'):
 elif os.path.exists('./apps'):
     sys.path.insert(0, './apps')
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jumpserver.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oms.settings")
 django.setup()
 
 from users.models import UserGroup
