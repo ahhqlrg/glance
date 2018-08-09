@@ -128,7 +128,7 @@ function replaceNodeAssetsAdminUser(nodes) {
         $.map(jumpserver.nodes_selected, function(value, index) {
             $('#opt_' + index).remove();
         });
-        // clear jumpserver.groups_selected
+        // clear oms.groups_selected
         jumpserver.nodes_selected = {};
     };
     APIUpdateAttr({

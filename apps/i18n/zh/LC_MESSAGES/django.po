@@ -1404,8 +1404,8 @@ msgstr "LDAP属性映射"
 
 #: common/forms.py:131
 msgid ""
-"User attr map present how to map LDAP user attr to jumpserver, username,name,"
-"email is jumpserver attr"
+"User attr map present how to map LDAP user attr to oms, username,name,"
+"email is oms attr"
 msgstr ""
 "用户属性映射代表怎样将LDAP中用户属性映射到jumpserver用户上，username, name,"
 "email 是jumpserver的属性"
@@ -2693,7 +2693,7 @@ msgid "Next"
 msgstr "下一步"
 
 #: users/templates/users/first_login_done.html:31
-msgid "Welcome to use jumpserver, visit "
+msgid "Welcome to use oms, visit "
 msgstr "欢迎使用Jumpserver开源跳板机系统"
 
 #: users/templates/users/first_login_done.html:32

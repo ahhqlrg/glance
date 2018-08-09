@@ -440,11 +440,11 @@ class UserPublicKeyUpdateView(LoginRequiredMixin, UpdateView):
 class UserPublicKeyGenerateView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
-        private, public = ssh_key_gen(username=request.user.username, hostname='jumpserver')
+        private, public = ssh_key_gen(username=request.user.username, hostname='oms')
         request.user.public_key = public
         request.user.save()
         response = HttpResponse(private, content_type='text/plain')
-        filename = "{0}-jumpserver.pem".format(request.user.username)
+        filename = "{0}-oms.pem".format(request.user.username)
         response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
         return response
 

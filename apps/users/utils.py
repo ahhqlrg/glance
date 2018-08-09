@@ -24,7 +24,7 @@ from common.forms import SecuritySettingForm
 from .models import User, LoginLog
 
 
-logger = logging.getLogger('jumpserver')
+logger = logging.getLogger('oms')
 
 
 class AdminUserRequiredMixin(UserPassesTestMixin):

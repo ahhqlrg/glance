@@ -1,5 +1,4 @@
 # ~*~ coding: utf-8 ~*~
-#boothli
 from __future__ import unicode_literals
 import re
 import os
