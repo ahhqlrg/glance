@@ -62,6 +62,7 @@ class Config:
 
 
 class DevelopmentConfig(Config):
+    LOG_LEVEL = 'WARNING'
     DB_ENGINE = 'mysql'
     DB_HOST = '127.0.0.1'
     DB_PORT = 3306

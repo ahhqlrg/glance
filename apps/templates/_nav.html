@@ -63,6 +63,29 @@
     </ul>
 </li>
 {% endif %}
+{% if request.user.is_superuser %}
+<li id="dev">
+    <a>
+        <i class="fa fa-eye-slash" style="width: 14px"></i> <span class="nav-label">{% trans '部署中心' %}</span><span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        <li id="task"><a>{% trans '任务编排' %}</a></li>
+        <li id="green"><a>{% trans '蓝绿发布' %}</a></li>
+        <li id="gray"><a>{% trans '灰度发布' %}</a></li>
+        <li id="rollback"><a>{% trans '妙级回滚' %}</a></li>
+    </ul>
+</li>
+{% endif %}
+{% if request.user.is_superuser %}
+<li id="monitor">
+    <a>
+        <i class="fa fa-shield" style="width: 14px"></i> <span class="nav-label">{% trans '监控中心' %}</span><span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        <li id="task"><a>{% trans '任务编排' %}</a></li>
+    </ul>
+</li>
+{% endif %}
 <li id="audits">
     <a>
         <i class="fa fa-history" style="width: 14px"></i> <span class="nav-label">{% trans 'Audits' %}</span><span class="fa arrow"></span>

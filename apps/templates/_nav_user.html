@@ -9,6 +9,33 @@
         <i class="fa fa-user" style="width: 14px"></i> <span class="nav-label">{% trans 'Profile' %}</span><span class="label label-info pull-right"></span>
     </a>
 </li>
+<li id="ops">
+    <a>
+        <i class="fa fa-coffee" style="width: 14px"></i> <span class="nav-label">{% trans 'Job Center' %}</span><span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        <li id="task"><a href="{% url 'ops:task-list' %}">{% trans 'Task list' %}</a></li>
+    </ul>
+</li>
+<li id="dev">
+    <a>
+        <i class="fa fa-eye-slash" style="width: 14px"></i> <span class="nav-label">{% trans '部署中心' %}</span><span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        <li id="task"><a>{% trans '任务编排' %}</a></li>
+        <li id="green"><a>{% trans '蓝绿发布' %}</a></li>
+        <li id="gray"><a>{% trans '灰度发布' %}</a></li>
+        <li id="rollback"><a>{% trans '妙级回滚' %}</a></li>
+    </ul>
+</li>
+<li id="monitor">
+    <a>
+        <i class="fa fa-shield" style="width: 14px"></i> <span class="nav-label">{% trans '监控中心' %}</span><span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        <li id="task"><a>{% trans '任务编排' %}</a></li>
+    </ul>
+</li>
 <li >
     <a href="{% url 'terminal:web-terminal' %}" target="_blank"><i class="fa fa-window-maximize" style="width: 14px"></i>
         <span class="nav-label">{% trans 'Web terminal' %}</span>
