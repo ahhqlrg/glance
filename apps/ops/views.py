@@ -2,11 +2,44 @@
 
 from django.utils.translation import ugettext as _
 from django.conf import settings
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
 
 from common.mixins import DatetimeSearchMixin
-from .models import Task, AdHoc, AdHocRunHistory, CeleryTask
+from .models import Task, AdHoc, AdHocRunHistory, CeleryTask, Job, Schedule
 from common.permissions import AdminUserRequiredMixin
+from django.urls import reverse_lazy
+
+from orgs.utils import current_org
+from .hands import Node, Asset, SystemUser, User, UserGroup
+#from .forms import AssetPermissionForm
+
+class JobListView(AdminUserRequiredMixin, ListView):
+    template_name = 'ops/job_list.html'
+    model = Job
+    context_object_name = "job_list"
+
+    def get_context_data(self, **kwargs):
+        context = {
+            'app': _('Ops'),
+            'action': _('Job List'),
+        }
+        kwargs.update(context)
+        return super().get_context_data(**kwargs)
+
+
+class JobCreateView(AdminUserRequiredMixin, CreateView):
+    model = Job
+    template_name = 'ops/job_create_update.html'
+    success_url = reverse_lazy('ops:job-list')
+    fields = ["users","user_groups","name","script","comment"]
+
+    def get_context_data(self, **kwargs):
+        context = {
+            'app': _('Ops'),
+            'action': _('Create Job'),
+        }
+        kwargs.update(context)
+        return super().get_context_data(**kwargs)
 
 
 class TaskListView(AdminUserRequiredMixin, DatetimeSearchMixin, ListView):

@@ -15,9 +15,9 @@ sys.path.append(BASE_DIR)
 from apps import __version__
 
 try:
-    from config import config as CONFIG
+    from conf import config as CONFIG
 except ImportError:
-    print("Could not find config file, `cp config_example.py config.py`")
+    print("Could not find config file, `cp conf_example.py conf.py`")
     sys.exit(1)
 
 os.environ["PYTHONIOENCODING"] = "UTF-8"

@@ -25,13 +25,13 @@ sys.path.append(PROJECT_DIR)
 
 # Import project config setting
 try:
-    from config import config as CONFIG
+    from conf import config as CONFIG
 except ImportError:
     msg = """
     
     Error: No config file found.
     
-    You can run `cp config_example.py config.py`, and edit it.
+    You can run `cp conf_example.py conf.py`, and edit it.
     """
     raise ImportError(msg)
     # CONFIG = type('_', (), {'__getattr__': lambda arg1, arg2: None})()
@@ -151,6 +151,28 @@ LOGIN_URL = reverse_lazy('users:login')
 SESSION_COOKIE_DOMAIN = CONFIG.SESSION_COOKIE_DOMAIN or None
 CSRF_COOKIE_DOMAIN = CONFIG.CSRF_COOKIE_DOMAIN or None
 SESSION_COOKIE_AGE = CONFIG.SESSION_COOKIE_AGE or 3600 * 24
+SESSION_EXPIRE_AT_BROWSER_CLOSE = CONFIG.SESSION_COOKIE_AGE or False
+SESSION_SAVE_EVERY_REQUEST = CONFIG.SESSION_SAVE_EVERY_REQUEST or False
+
+'''
+SESSION_COOKIE_NAME ＝ "sessionid"      # Session的cookie保存在浏览器上时的key，即：sessionid＝随机字符串（默认）
+
+SESSION_COOKIE_PATH ＝ "/"              # Session的cookie保存的路径（默认）
+
+SESSION_COOKIE_DOMAIN = None             # Session的cookie保存的域名（默认）
+
+SESSION_COOKIE_SECURE = False          # 是否Https传输cookie（默认）
+
+SESSION_COOKIE_HTTPONLY = True         # 是否Session的cookie只支持http传输（默认）
+
+SESSION_COOKIE_AGE = 1209600             # Session的cookie失效日期（2周）（默认）
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False    # 是否关闭浏览器使得Session过期（默认）
+
+SESSION_SAVE_EVERY_REQUEST = False        # 是否每次请求都保存Session，默认修改之后才保存(默认)
+
+'''
+
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 # Database

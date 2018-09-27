@@ -15,25 +15,26 @@
     </a>
     <ul class="nav nav-second-level">
         <li id="task"><a href="{% url 'ops:task-list' %}">{% trans 'Task list' %}</a></li>
+        <li id="job"><a href="{% url 'ops:job-list' %}">{% trans 'Job List' %}</a></li>
     </ul>
 </li>
 <li id="dev">
     <a>
-        <i class="fa fa-eye-slash" style="width: 14px"></i> <span class="nav-label">{% trans '部署中心' %}</span><span class="fa arrow"></span>
+        <i class="fa fa-eye-slash" style="width: 14px"></i> <span class="nav-label">{% trans 'Dev Center' %}</span><span class="fa arrow"></span>
     </a>
     <ul class="nav nav-second-level">
-        <li id="task"><a>{% trans '任务编排' %}</a></li>
-        <li id="green"><a>{% trans '蓝绿发布' %}</a></li>
-        <li id="gray"><a>{% trans '灰度发布' %}</a></li>
-        <li id="rollback"><a>{% trans '妙级回滚' %}</a></li>
+        <li id="task"><a>{% trans 'Task List' %}</a></li>
+        <li id="green"><a>{% trans 'Green List' %}</a></li>
+        <li id="gray"><a>{% trans 'Gray List' %}</a></li>
+        <li id="rollback"><a>{% trans 'Rollback List' %}</a></li>
     </ul>
 </li>
 <li id="monitor">
     <a>
-        <i class="fa fa-shield" style="width: 14px"></i> <span class="nav-label">{% trans '监控中心' %}</span><span class="fa arrow"></span>
+        <i class="fa fa-shield" style="width: 14px"></i> <span class="nav-label">{% trans 'Monitor Center' %}</span><span class="fa arrow"></span>
     </a>
     <ul class="nav nav-second-level">
-        <li id="task"><a>{% trans '任务编排' %}</a></li>
+        <li id="task"><a>{% trans 'Task List' %}</a></li>
     </ul>
 </li>
 <li >
