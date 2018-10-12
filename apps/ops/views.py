@@ -3,6 +3,7 @@
 from django.utils.translation import ugettext as _
 from django.conf import settings
 from django.views.generic import ListView, DetailView, TemplateView, CreateView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from common.mixins import DatetimeSearchMixin
 from .models import Task, AdHoc, AdHocRunHistory, CeleryTask, Job, Schedule
@@ -11,35 +12,60 @@ from django.urls import reverse_lazy
 
 from orgs.utils import current_org
 from .hands import Node, Asset, SystemUser, User, UserGroup
-#from .forms import AssetPermissionForm
+from .forms import JobForm
 
-class JobListView(AdminUserRequiredMixin, ListView):
-    template_name = 'ops/job_list.html'
+class ScriptListView(AdminUserRequiredMixin, ListView):
+    template_name = 'ops/script_list.html'
     model = Job
-    context_object_name = "job_list"
+
+    context_object_name = "script_list"
 
     def get_context_data(self, **kwargs):
         context = {
             'app': _('Ops'),
-            'action': _('Job List'),
+            'action': _('Script List'),
         }
         kwargs.update(context)
         return super().get_context_data(**kwargs)
 
 
-class JobCreateView(AdminUserRequiredMixin, CreateView):
+class AnsibleListView(AdminUserRequiredMixin, ListView):
+    template_name = 'ops/ansible_list.html'
     model = Job
-    template_name = 'ops/job_create_update.html'
-    success_url = reverse_lazy('ops:job-list')
-    fields = ["users","user_groups","name","script","comment"]
+
+    context_object_name = "ansible_list"
 
     def get_context_data(self, **kwargs):
         context = {
             'app': _('Ops'),
-            'action': _('Create Job'),
+            'action': _('Ansible List'),
         }
         kwargs.update(context)
         return super().get_context_data(**kwargs)
+
+class ScriptCreateView(AdminUserRequiredMixin, CreateView):
+    model = Job
+    form_class = JobForm
+    template_name = 'ops/script_create_update.html'
+    success_url = reverse_lazy('ops:script-list')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        return form
+    def get_context_data(self, **kwargs):
+        context = {
+            'app': _('Ops'),
+            'action': _('Create Script'),
+        }
+        kwargs.update(context)
+        return super().get_context_data(**kwargs)
+    def form_valid(self, form):
+        user = form.save(commit=True)
+        #user.created_by = self.request.user.username or 'System'
+        user.save()
+        #post_user_create.send(self.__class__, user=user)
+        return super().form_valid(form)
+
 
 
 class TaskListView(AdminUserRequiredMixin, DatetimeSearchMixin, ListView):

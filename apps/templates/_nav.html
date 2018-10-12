@@ -60,7 +60,8 @@
     </a>
     <ul class="nav nav-second-level">
         <li id="task"><a href="{% url 'ops:task-list' %}">{% trans 'Task list' %}</a></li>
-        <li id="job"><a href="{% url 'ops:job-list' %}">{% trans 'Job List' %}</a></li>
+        <li id="job"><a href="{% url 'ops:script-list' %}">{% trans 'Job List' %}</a></li>
+        <li id="cron"><a href="#">{% trans 'Crontab' %}</a></li>
     </ul>
 
 </li>
@@ -96,15 +97,15 @@
         <li id="ftp-log"><a href="{% url 'audits:ftp-log-list' %}">{% trans 'FTP log' %}</a></li>
     </ul>
 </li>
-{#<li id="">#}
-{#    <a href="#">#}
-{#        <i class="fa fa-download"></i> <span class="nav-label">{% trans 'File' %}</span><span class="fa arrow"></span>#}
-{#    </a>#}
-{#    <ul class="nav nav-second-level">#}
-{#        <li id="upload"><a href="">{% trans 'File upload' %}</a></li>#}
-{#        <li id="download"><a href="">{% trans 'File download' %}</a></li>#}
-{#    </ul>#}
-{#</li>#}
+<li id="file">
+    <a href="#">
+       <i class="fa fa-download"></i> <span class="nav-label">{% trans 'File' %}</span><span class="fa arrow"></span>
+    </a>
+    <ul class="nav nav-second-level">
+        <li id="upload"><a href="">{% trans 'File Upload' %}</a></li>
+        <li id="download"><a href="">{% trans 'File Download' %}</a></li>
+    </ul>
+</li>
 {% if XPACK_PLUGINS %}
 <li id="xpack">
     <a>

@@ -10,17 +10,17 @@ from .models import Job,Schedule
 
 
 class JobForm(forms.ModelForm):
-    users = forms.ModelMultipleChoiceField(
-        queryset=User.objects.exclude(role=User.ROLE_APP),
-        label=_("User"),
-        widget=forms.SelectMultiple(
-            attrs={
-                'class': 'select2',
-                'data-placeholder': _('Select users')
-            }
-        ),
-        required=False,
-    )
+    # users = forms.ModelMultipleChoiceField(
+    #     queryset=User.objects.exclude(role=User.ROLE_APP),
+    #     label=_("User"),
+    #     widget=forms.SelectMultiple(
+    #         attrs={
+    #             'class': 'select2',
+    #             'data-placeholder': _('Select users')
+    #         }
+    #     ),
+    #     required=False,
+    # )
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if 'initial' not in kwargs:
@@ -31,11 +31,9 @@ class JobForm(forms.ModelForm):
             model = field.queryset.model
             field.queryset = model.objects.all()
 
-
-
     class Meta:
         model = Job
-
+        fields =  '__all__'
         widgets = {
             'users': forms.SelectMultiple(
                 attrs={'class': 'select2', 'data-placeholder': _("User")}
@@ -49,8 +47,15 @@ class JobForm(forms.ModelForm):
     def clean_user_groups(self):
         users = self.cleaned_data.get('users')
         user_groups = self.cleaned_data.get('user_groups')
-
+        print("lclean_user_groups ", self.cleaned_data.get('users'))
         if not users and not user_groups:
             raise forms.ValidationError(
                 _("User or group at least one required"))
         return self.cleaned_data["user_groups"]
+
+    def save(self, commit=True):
+        print("lirengang ",self.cleaned_data.get('users'))
+        job = super().save(commit=commit)
+        job.save()
+
+        return job
