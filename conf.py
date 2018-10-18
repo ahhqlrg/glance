@@ -4,7 +4,7 @@
 
     Glance project setting file
 
-    :copyright: (c) 2014-2017 by Glance Team
+    :copyright: (c) 2018-2050 by Glance Team
     :license: GPL v2, see LICENSE for more details.
 """
 import os
