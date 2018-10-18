@@ -1,5 +1,5 @@
 """
-    oms.__app__.hands.py
+    glance.__app__.hands.py
     ~~~~~~~~~~~~~~~~~
 
     This app depends other apps api, function .. should be import or write mack here.

@@ -149,8 +149,8 @@
 {% endblock %}
 {% block custom_foot_js %}
 <script>
-oms.users_selected = {};
-oms.nodes_selected = {};
+glance.users_selected = {};
+glance.nodes_selected = {};
 
 function addUsers(users) {
     var the_url = "{% url 'api-perms:asset-permission-add-user' pk=asset_permission.id %}";
@@ -197,27 +197,27 @@ $(document).ready(function () {
     $('.select2.user').select2()
         .on('select2:select', function(evt) {
              var data = evt.params.data;
-             oms.users_selected[data.id] = data.text;
+             glance.users_selected[data.id] = data.text;
         })
         .on('select2:unselect', function(evt) {
             var data = evt.params.data;
-            delete oms.users_selected[data.id]
+            delete glance.users_selected[data.id]
         });
     $('.select2.user-group').select2()
         .on('select2:select', function(evt) {
              var data = evt.params.data;
-             oms.nodes_selected[data.id] = data.text;
+             glance.nodes_selected[data.id] = data.text;
         })
         .on('select2:unselect', function(evt) {
             var data = evt.params.data;
-            delete oms.nodes_selected[data.id]
+            delete glance.nodes_selected[data.id]
         })
 }).on('click', '.btn-add-user', function () {
-    if (Object.keys(oms.users_selected).length === 0) {
+    if (Object.keys(glance.users_selected).length === 0) {
 		return false;
 	}
 	var users_id = [];
-    $.map(oms.users_selected, function(value, index) {
+    $.map(glance.users_selected, function(value, index) {
         users_id.push(index);
     });
     addUsers(users_id);
@@ -229,7 +229,7 @@ $(document).ready(function () {
     var users = [user_id];
     removeUser(users)
 }).on('click', '#btn-add-group', function () {
-    if (Object.keys(oms.nodes_selected).length === 0) {
+    if (Object.keys(glance.nodes_selected).length === 0) {
 		return false;
 	}
 
@@ -237,7 +237,7 @@ $(document).ready(function () {
         return $(this).data('gid');
     }).get();
 
-    $.map(oms.nodes_selected, function(group_name, index) {
+    $.map(glance.nodes_selected, function(group_name, index) {
         groups.push(index);
         $('#opt_' + index).remove();
         $('.group_edit tbody').append(

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jumpserver 0.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-14 13:29+0800\n"
+"POT-Creation-Date: 2018-10-17 17:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: ibuler <ibuler@qq.com>\n"
 "Language-Team: Jumpserver team<ibuler@qq.com>\n"
@@ -32,7 +32,8 @@ msgstr ""
 #: assets/forms/asset.py:27 assets/models/asset.py:80
 #: assets/models/user.py:113 assets/templates/assets/asset_detail.html:183
 #: assets/templates/assets/asset_detail.html:191
-#: assets/templates/assets/system_user_detail.html:178 perms/models.py:32
+#: assets/templates/assets/system_user_detail.html:178
+#: ops/models/script_schedule.py:21 perms/models.py:32
 msgid "Nodes"
 msgstr "节点管理"
 
@@ -104,7 +105,8 @@ msgstr "端口"
 #: assets/templates/assets/system_user_list.html:30 audits/models.py:13
 #: audits/templates/audits/ftp_log_list.html:41
 #: audits/templates/audits/ftp_log_list.html:72
-#: ops/templates/ops/job_list.html:27 perms/forms.py:47 perms/models.py:31
+#: ops/models/script_schedule.py:20 ops/templates/ops/salt_list.html:30
+#: ops/templates/ops/script_list.html:30 perms/forms.py:47 perms/models.py:31
 #: perms/templates/perms/asset_permission_create_update.html:40
 #: perms/templates/perms/asset_permission_list.html:56
 #: perms/templates/perms/asset_permission_list.html:148
@@ -129,7 +131,7 @@ msgstr "资产"
 #: assets/templates/assets/system_user_list.html:26 common/models.py:26
 #: common/templates/common/terminal_setting.html:72
 #: common/templates/common/terminal_setting.html:90 ops/models/adhoc.py:36
-#: ops/models/label.py:18 ops/templates/ops/job_list.html:23
+#: ops/templates/ops/salt_list.html:28 ops/templates/ops/script_list.html:28
 #: ops/templates/ops/task_detail.html:59 ops/templates/ops/task_list.html:35
 #: orgs/models.py:10 perms/models.py:28
 #: perms/templates/perms/asset_permission_detail.html:62
@@ -153,11 +155,10 @@ msgstr "名称"
 #: assets/templates/assets/domain_gateway_list.html:60
 #: assets/templates/assets/system_user_detail.html:62
 #: assets/templates/assets/system_user_list.html:27
-#: ops/templates/ops/job_list.html:24
 #: perms/templates/perms/asset_permission_user.html:55 users/forms.py:15
 #: users/forms.py:33 users/models/authentication.py:70 users/models/user.py:49
 #: users/templates/users/_select_user_modal.html:14
-#: users/templates/users/login.html:60
+#: users/templates/users/login.html:54
 #: users/templates/users/login_log_list.html:49
 #: users/templates/users/user_detail.html:67
 #: users/templates/users/user_list.html:24
@@ -171,7 +172,7 @@ msgstr "密码或密钥密码"
 
 #: assets/forms/user.py:25 assets/models/base.py:24 common/forms.py:113
 #: users/forms.py:17 users/forms.py:35 users/forms.py:47
-#: users/templates/users/login.html:63
+#: users/templates/users/login.html:57
 #: users/templates/users/reset_password.html:53
 #: users/templates/users/user_create.html:10
 #: users/templates/users/user_password_authentication.html:14
@@ -248,7 +249,6 @@ msgstr "主机名"
 #: assets/templates/assets/system_user_detail.html:70
 #: assets/templates/assets/system_user_list.html:28
 #: assets/templates/assets/user_asset_list.html:164
-#: ops/templates/ops/job_list.html:25
 #: terminal/templates/terminal/session_list.html:75
 msgid "Protocol"
 msgstr "协议"
@@ -260,7 +260,7 @@ msgstr "系统平台"
 
 #: assets/models/asset.py:81 assets/models/domain.py:49
 #: assets/models/label.py:21 assets/templates/assets/asset_detail.html:105
-#: assets/templates/assets/user_asset_list.html:169 ops/models/label.py:21
+#: assets/templates/assets/user_asset_list.html:169
 msgid "Is active"
 msgstr "激活"
 
@@ -347,8 +347,8 @@ msgstr "创建者"
 #: assets/models/domain.py:21 assets/models/group.py:22
 #: assets/models/label.py:24 assets/templates/assets/admin_user_detail.html:64
 #: assets/templates/assets/domain_detail.html:68
-#: assets/templates/assets/system_user_detail.html:96 ops/models/label.py:24
-#: ops/templates/ops/adhoc_detail.html:90
+#: assets/templates/assets/system_user_detail.html:96 ops/models/script.py:27
+#: ops/models/script_schedule.py:26 ops/templates/ops/adhoc_detail.html:90
 #: ops/templates/ops/task_detail.html:63 orgs/models.py:14 perms/models.py:38
 #: perms/models.py:84 perms/templates/perms/asset_permission_detail.html:94
 #: terminal/templates/terminal/terminal_detail.html:59
@@ -368,9 +368,10 @@ msgstr "创建日期"
 #: assets/templates/assets/system_user_detail.html:104
 #: assets/templates/assets/system_user_list.html:34
 #: assets/templates/assets/user_asset_list.html:170 common/models.py:30
-#: ops/models/adhoc.py:42 ops/models/label.py:22
-#: ops/templates/ops/job_list.html:31 orgs/models.py:15 perms/models.py:39
-#: perms/models.py:85 perms/templates/perms/asset_permission_detail.html:102
+#: ops/models/adhoc.py:42 ops/models/script.py:25
+#: ops/templates/ops/salt_list.html:33 ops/templates/ops/script_list.html:33
+#: orgs/models.py:15 perms/models.py:39 perms/models.py:85
+#: perms/templates/perms/asset_permission_detail.html:102
 #: terminal/models.py:27 terminal/templates/terminal/terminal_detail.html:63
 #: users/models/group.py:15 users/models/user.py:84
 #: users/templates/users/user_detail.html:123
@@ -422,7 +423,7 @@ msgid "Default"
 msgstr "默认"
 
 #: assets/models/cluster.py:36 assets/models/label.py:14
-#: ops/models/label.py:14 users/models/user.py:360
+#: users/models/user.py:360
 msgid "System"
 msgstr "系统"
 
@@ -444,8 +445,10 @@ msgstr "默认资产组"
 
 #: assets/models/label.py:15 audits/models.py:11
 #: audits/templates/audits/ftp_log_list.html:33
-#: audits/templates/audits/ftp_log_list.html:71 ops/models/label.py:15
-#: perms/forms.py:16 perms/forms.py:41 perms/models.py:29
+#: audits/templates/audits/ftp_log_list.html:71 ops/forms.py:42
+#: ops/models/script.py:21 ops/models/script_schedule.py:19
+#: ops/templates/ops/script_create_update.html:26 perms/forms.py:16
+#: perms/forms.py:41 perms/models.py:29
 #: perms/templates/perms/asset_permission_create_update.html:36
 #: perms/templates/perms/asset_permission_list.html:54
 #: perms/templates/perms/asset_permission_list.html:142
@@ -462,11 +465,10 @@ msgstr "用户"
 
 #: assets/models/label.py:19 assets/models/node.py:19
 #: assets/templates/assets/label_list.html:15 common/models.py:27
-#: ops/models/label.py:19
 msgid "Value"
 msgstr "值"
 
-#: assets/models/label.py:20 ops/models/label.py:20
+#: assets/models/label.py:20
 msgid "Category"
 msgstr "分类"
 
@@ -497,7 +499,7 @@ msgstr "手动登录"
 #: assets/views/label.py:42 assets/views/label.py:58
 #: assets/views/system_user.py:28 assets/views/system_user.py:44
 #: assets/views/system_user.py:60 assets/views/system_user.py:74
-#: ops/views.py:16 templates/_nav.html:20
+#: templates/_nav.html:20
 msgid "Assets"
 msgstr "资产管理"
 
@@ -524,7 +526,6 @@ msgstr "Shell"
 #: assets/models/user.py:120
 #: assets/templates/assets/system_user_detail.html:66
 #: assets/templates/assets/system_user_list.html:29
-#: ops/templates/ops/job_list.html:26
 msgid "Login mode"
 msgstr "登录模式"
 
@@ -637,6 +638,7 @@ msgstr "资产列表"
 #: assets/templates/assets/asset_create.html:16
 #: assets/templates/assets/asset_update.html:21
 #: assets/templates/assets/gateway_create_update.html:37
+#: ops/templates/ops/script_create_update.html:23
 #: perms/templates/perms/asset_permission_create_update.html:33
 msgid "Basic"
 msgstr "基本"
@@ -657,6 +659,7 @@ msgstr "自动生成密钥"
 #: assets/templates/assets/asset_create.html:60
 #: assets/templates/assets/asset_update.html:64
 #: assets/templates/assets/gateway_create_update.html:53
+#: ops/templates/ops/script_create_update.html:33
 #: perms/templates/perms/asset_permission_create_update.html:45
 #: terminal/templates/terminal/terminal_update.html:42
 msgid "Other"
@@ -675,6 +678,7 @@ msgstr "其它"
 #: common/templates/common/ldap_setting.html:62
 #: common/templates/common/security_setting.html:70
 #: common/templates/common/terminal_setting.html:106
+#: ops/templates/ops/script_create_update.html:38
 #: perms/templates/perms/asset_permission_create_update.html:69
 #: terminal/templates/terminal/terminal_update.html:47
 #: users/templates/users/_user.html:46
@@ -701,6 +705,7 @@ msgstr "重置"
 #: common/templates/common/ldap_setting.html:63
 #: common/templates/common/security_setting.html:71
 #: common/templates/common/terminal_setting.html:108
+#: ops/templates/ops/script_create_update.html:39
 #: perms/templates/perms/asset_permission_create_update.html:70
 #: terminal/templates/terminal/command_list.html:103
 #: terminal/templates/terminal/session_list.html:126
@@ -754,7 +759,6 @@ msgstr "资产列表"
 #: assets/templates/assets/admin_user_list.html:26
 #: assets/templates/assets/system_user_asset.html:52
 #: assets/templates/assets/system_user_list.html:31
-#: ops/templates/ops/job_list.html:28
 #: users/templates/users/user_group_granted_asset.html:47
 msgid "Reachable"
 msgstr "可连接"
@@ -789,7 +793,7 @@ msgstr "测试"
 #: assets/templates/assets/label_list.html:38
 #: assets/templates/assets/system_user_detail.html:26
 #: assets/templates/assets/system_user_list.html:89
-#: ops/templates/ops/job_list.html:86
+#: ops/templates/ops/script_list.html:91
 #: perms/templates/perms/asset_permission_detail.html:30
 #: perms/templates/perms/asset_permission_list.html:200
 #: terminal/templates/terminal/terminal_detail.html:16
@@ -814,7 +818,7 @@ msgstr "更新"
 #: assets/templates/assets/label_list.html:39
 #: assets/templates/assets/system_user_detail.html:30
 #: assets/templates/assets/system_user_list.html:90
-#: ops/templates/ops/job_list.html:87 ops/templates/ops/task_list.html:72
+#: ops/templates/ops/script_list.html:92 ops/templates/ops/task_list.html:72
 #: perms/templates/perms/asset_permission_detail.html:34
 #: perms/templates/perms/asset_permission_list.html:201
 #: terminal/templates/terminal/terminal_list.html:73
@@ -840,7 +844,7 @@ msgstr "选择节点"
 #: assets/templates/assets/asset_list.html:627
 #: assets/templates/assets/system_user_detail.html:195
 #: assets/templates/assets/system_user_list.html:139
-#: ops/templates/ops/job_list.html:136 templates/_modal.html:22
+#: ops/templates/ops/script_list.html:141 templates/_modal.html:22
 #: terminal/templates/terminal/session_detail.html:108
 #: users/templates/users/user_detail.html:374
 #: users/templates/users/user_detail.html:399
@@ -860,13 +864,12 @@ msgstr "创建管理用户"
 
 #: assets/templates/assets/admin_user_list.html:27
 #: assets/templates/assets/system_user_list.html:32
-#: ops/templates/ops/job_list.html:29
 msgid "Unreachable"
 msgstr "不可达"
 
 #: assets/templates/assets/admin_user_list.html:28
 #: assets/templates/assets/system_user_list.html:33
-#: ops/templates/ops/adhoc_history.html:54 ops/templates/ops/job_list.html:30
+#: ops/templates/ops/adhoc_history.html:54
 #: ops/templates/ops/task_history.html:60
 msgid "Ratio"
 msgstr "比例"
@@ -877,9 +880,9 @@ msgstr "比例"
 #: assets/templates/assets/domain_list.html:26
 #: assets/templates/assets/label_list.html:17
 #: assets/templates/assets/system_user_list.html:35
-#: ops/templates/ops/adhoc_history.html:59 ops/templates/ops/job_list.html:32
-#: ops/templates/ops/task_adhoc.html:64 ops/templates/ops/task_history.html:65
-#: ops/templates/ops/task_list.html:42
+#: ops/templates/ops/adhoc_history.html:59 ops/templates/ops/salt_list.html:34
+#: ops/templates/ops/script_list.html:34 ops/templates/ops/task_adhoc.html:64
+#: ops/templates/ops/task_history.html:65 ops/templates/ops/task_list.html:42
 #: perms/templates/perms/asset_permission_list.html:60
 #: terminal/templates/terminal/session_list.html:81
 #: terminal/templates/terminal/terminal_list.html:36
@@ -1032,7 +1035,7 @@ msgstr "存在资产，不能删除"
 
 #: assets/templates/assets/asset_list.html:622
 #: assets/templates/assets/system_user_list.html:134
-#: ops/templates/ops/job_list.html:131
+#: ops/templates/ops/script_list.html:136
 #: users/templates/users/user_detail.html:369
 #: users/templates/users/user_detail.html:394
 #: users/templates/users/user_detail.html:461
@@ -1156,23 +1159,24 @@ msgid "Create system user"
 msgstr "创建系统用户"
 
 #: assets/templates/assets/system_user_list.html:135
-#: ops/templates/ops/job_list.html:132
+#: ops/templates/ops/script_list.html:137
 msgid "This will delete the selected System Users !!!"
 msgstr "删除选择系统用户"
 
 #: assets/templates/assets/system_user_list.html:143
-#: ops/templates/ops/job_list.html:140
+#: ops/templates/ops/script_list.html:145
 msgid "System Users Deleted."
 msgstr "已被删除"
 
 #: assets/templates/assets/system_user_list.html:144
 #: assets/templates/assets/system_user_list.html:149
-#: ops/templates/ops/job_list.html:141 ops/templates/ops/job_list.html:146
+#: ops/templates/ops/script_list.html:146
+#: ops/templates/ops/script_list.html:151
 msgid "System Users Delete"
 msgstr "删除系统用户"
 
 #: assets/templates/assets/system_user_list.html:148
-#: ops/templates/ops/job_list.html:145
+#: ops/templates/ops/script_list.html:150
 msgid "System Users Deleting failed."
 msgstr "系统用户删除失败"
 
@@ -1232,7 +1236,7 @@ msgstr "标签列表"
 msgid "Update label"
 msgstr "更新标签"
 
-#: assets/views/system_user.py:29 ops/views.py:17
+#: assets/views/system_user.py:29
 msgid "System user list"
 msgstr "系统用户列表"
 
@@ -1282,11 +1286,11 @@ msgstr "成功"
 msgid "Date start"
 msgstr "开始日期"
 
-#: audits/views.py:51 templates/_nav.html:93
+#: audits/views.py:51 templates/_nav.html:94
 msgid "Audits"
 msgstr "日志审计"
 
-#: audits/views.py:52 templates/_nav.html:96
+#: audits/views.py:52 templates/_nav.html:97
 msgid "FTP log"
 msgstr "FTP日志"
 
@@ -1411,8 +1415,8 @@ msgstr "LDAP属性映射"
 
 #: common/forms.py:132
 msgid ""
-"User attr map present how to map LDAP user attr to oms, username,name,email "
-"is oms attr"
+"User attr map present how to map LDAP user attr to glance, username,name,"
+"email is glance attr"
 msgstr ""
 "用户属性映射代表怎样将LDAP中用户属性映射到jumpserver用户上，username, name,"
 "email 是jumpserver的属性"
@@ -1605,7 +1609,7 @@ msgid "Special char not allowed"
 msgstr "不能包含特殊字符"
 
 #: common/views.py:19 common/views.py:45 common/views.py:71
-#: common/views.py:101 common/views.py:129 templates/_nav.html:123
+#: common/views.py:101 common/views.py:129 templates/_nav.html:124
 msgid "Settings"
 msgstr "系统设置"
 
@@ -1618,13 +1622,28 @@ msgstr "更新设置成功, 请手动重启程序"
 msgid "Waiting ..."
 msgstr ""
 
+#: ops/forms.py:45 ops/models/script.py:23 perms/forms.py:44
+#: perms/models.py:30 perms/models.py:79
+#: perms/templates/perms/asset_permission_list.html:55
+#: perms/templates/perms/asset_permission_list.html:145 templates/_nav.html:14
+#: users/models/group.py:26 users/models/user.py:57
+#: users/templates/users/_select_user_modal.html:16
+#: users/templates/users/user_detail.html:200
+#: users/templates/users/user_list.html:26
+msgid "User group"
+msgstr "用户组"
+
+#: ops/forms.py:56 perms/forms.py:66
+msgid "User or group at least one required"
+msgstr ""
+
 #: ops/models/adhoc.py:37
 msgid "Interval"
 msgstr "间隔"
 
-#: ops/models/adhoc.py:38
+#: ops/models/adhoc.py:38 templates/_nav.html:64
 msgid "Crontab"
-msgstr "Crontab"
+msgstr "定时任务"
 
 #: ops/models/adhoc.py:38
 msgid "5 * * * *"
@@ -1641,7 +1660,7 @@ msgstr "任务"
 #: ops/models/adhoc.py:155 ops/templates/ops/adhoc_detail.html:57
 #: ops/templates/ops/task_adhoc.html:60
 msgid "Pattern"
-msgstr ""
+msgstr "模式"
 
 #: ops/models/adhoc.py:156 ops/templates/ops/adhoc_detail.html:61
 msgid "Options"
@@ -1704,13 +1723,30 @@ msgstr "结果"
 msgid "Adhoc result summary"
 msgstr "汇总"
 
+#: ops/models/script.py:19 ops/models/script_schedule.py:18
+#: ops/templates/ops/adhoc_history_detail.html:53
+msgid "Task name"
+msgstr "任务名称"
+
+#: ops/models/script.py:24
+msgid "Script name"
+msgstr "脚本名称"
+
+#: ops/models/script_schedule.py:23
+msgid "Result"
+msgstr "结果"
+
+#: ops/models/script_schedule.py:24
+msgid "Schedule log"
+msgstr "调度日志"
+
 #: ops/templates/ops/adhoc_detail.html:19
 #: ops/templates/ops/adhoc_history.html:19
 msgid "Version detail"
 msgstr "版本详情"
 
 #: ops/templates/ops/adhoc_detail.html:22
-#: ops/templates/ops/adhoc_history.html:22 ops/views.py:115
+#: ops/templates/ops/adhoc_history.html:22 ops/views.py:168
 msgid "Version run history"
 msgstr "执行历史"
 
@@ -1776,7 +1812,7 @@ msgstr "失败/成功/总"
 msgid "Version"
 msgstr "版本"
 
-#: ops/templates/ops/adhoc_history_detail.html:19 ops/views.py:128
+#: ops/templates/ops/adhoc_history_detail.html:19 ops/views.py:181
 msgid "Run history detail"
 msgstr "执行历史详情"
 
@@ -1788,10 +1824,6 @@ msgstr "输出"
 #: ops/templates/ops/adhoc_history_detail.html:30
 msgid "History detail of"
 msgstr "执行历史详情"
-
-#: ops/templates/ops/adhoc_history_detail.html:53
-msgid "Task name"
-msgstr "任务名称"
 
 #: ops/templates/ops/adhoc_history_detail.html:84
 msgid "Failed assets"
@@ -1806,17 +1838,57 @@ msgstr "没有资产"
 msgid "Success assets"
 msgstr "成功资产"
 
-#: ops/templates/ops/job_list.html:15
-msgid "创建任务"
+#: ops/templates/ops/ansible_list.html:8 ops/templates/ops/salt_list.html:8
+#: ops/templates/ops/script_create_update.html:9
+#: ops/templates/ops/script_list.html:8
+msgid "Script"
+msgstr "脚本"
+
+#: ops/templates/ops/ansible_list.html:11 ops/templates/ops/salt_list.html:11
+#: ops/templates/ops/script_create_update.html:12
+#: ops/templates/ops/script_list.html:11
+msgid "Ansible"
 msgstr ""
 
+#: ops/templates/ops/ansible_list.html:14 ops/templates/ops/salt_list.html:14
+#: ops/templates/ops/script_create_update.html:15
+#: ops/templates/ops/script_list.html:14
+msgid "Salt"
+msgstr ""
+
+#: ops/templates/ops/salt_list.html:20
+#, fuzzy
+#| msgid "Create task"
+msgid "Create Task"
+msgstr "创建任务"
+
+#: ops/templates/ops/salt_list.html:29 ops/templates/ops/script_list.html:29
+msgid "User name"
+msgstr "用户名"
+
+#: ops/templates/ops/salt_list.html:31 ops/templates/ops/script_list.html:31
+msgid "Last update time"
+msgstr "上次执行时间"
+
+#: ops/templates/ops/salt_list.html:32 ops/templates/ops/script_list.html:32
+msgid "Execute result"
+msgstr "执行结果"
+
+#: ops/templates/ops/script_create_update.html:30
+msgid "script"
+msgstr "脚本"
+
+#: ops/templates/ops/script_list.html:20
+msgid "Create task"
+msgstr "创建任务"
+
 #: ops/templates/ops/task_adhoc.html:19 ops/templates/ops/task_detail.html:19
-#: ops/templates/ops/task_history.html:19 ops/views.py:63
+#: ops/templates/ops/task_history.html:19 ops/views.py:116
 msgid "Task detail"
 msgstr "任务详情"
 
 #: ops/templates/ops/task_adhoc.html:22 ops/templates/ops/task_detail.html:22
-#: ops/templates/ops/task_history.html:22 ops/views.py:76
+#: ops/templates/ops/task_history.html:22 ops/views.py:129
 msgid "Task versions"
 msgstr "任务各版本"
 
@@ -1878,16 +1950,29 @@ msgstr "执行"
 msgid "Task start: "
 msgstr "任务开始: "
 
-#: ops/views.py:46 ops/views.py:62 ops/views.py:75 ops/views.py:88
-#: ops/views.py:101 ops/views.py:114 ops/views.py:127
+#: ops/views.py:25 ops/views.py:40 ops/views.py:58 ops/views.py:99
+#: ops/views.py:115 ops/views.py:128 ops/views.py:141 ops/views.py:154
+#: ops/views.py:167 ops/views.py:180
 msgid "Ops"
 msgstr "作业中心"
 
-#: ops/views.py:47 templates/_nav.html:62 templates/_nav_user.html:17
+#: ops/views.py:26
+msgid "Script Schedule"
+msgstr "脚本调度"
+
+#: ops/views.py:41
+msgid "Ansible Manager"
+msgstr "Ansible 管理"
+
+#: ops/views.py:59
+msgid "Create Script"
+msgstr "创建脚本"
+
+#: ops/views.py:100 templates/_nav.html:62 templates/_nav_user.html:17
 msgid "Task list"
 msgstr "任务列表"
 
-#: ops/views.py:89
+#: ops/views.py:142
 msgid "Task run history"
 msgstr "执行历史"
 
@@ -1895,20 +1980,6 @@ msgstr "执行历史"
 #: users/forms.py:316
 msgid "Select users"
 msgstr "选择用户"
-
-#: perms/forms.py:44 perms/models.py:30 perms/models.py:79
-#: perms/templates/perms/asset_permission_list.html:55
-#: perms/templates/perms/asset_permission_list.html:145 templates/_nav.html:14
-#: users/models/group.py:26 users/models/user.py:57
-#: users/templates/users/_select_user_modal.html:16
-#: users/templates/users/user_detail.html:200
-#: users/templates/users/user_list.html:26
-msgid "User group"
-msgstr "用户组"
-
-#: perms/forms.py:66
-msgid "User or group at least one required"
-msgstr ""
 
 #: perms/forms.py:75
 msgid "Asset or group at least one required"
@@ -2037,12 +2108,12 @@ msgid "Asset permission asset list"
 msgstr "资产授权资产列表"
 
 #: templates/_header_bar.html:18
-msgid "欢迎使用自动化运维管理系统"
-msgstr ""
+msgid "Welcome to Glance"
+msgstr "欢迎使用自动化运维管理系统"
 
 #: templates/_header_bar.html:23
-msgid "帮助"
-msgstr ""
+msgid "Help"
+msgstr "帮助"
 
 #: templates/_header_bar.html:37 templates/_nav_user.html:9 users/forms.py:148
 #: users/templates/users/_user.html:39
@@ -2067,8 +2138,8 @@ msgstr "用户页面"
 msgid "Logout"
 msgstr "注销登录"
 
-#: templates/_header_bar.html:49 users/templates/users/login.html:44
-#: users/templates/users/login.html:68
+#: templates/_header_bar.html:49 users/templates/users/login.html:38
+#: users/templates/users/login.html:62
 msgid "Login"
 msgstr "登录"
 
@@ -2153,32 +2224,44 @@ msgstr "作业中心"
 msgid "Job List"
 msgstr "作业调度"
 
-#: templates/_nav.html:71 templates/_nav_user.html:23
+#: templates/_nav.html:72 templates/_nav_user.html:23
 msgid "Dev Center"
 msgstr "发布中心"
 
-#: templates/_nav.html:74 templates/_nav.html:87 templates/_nav_user.html:26
+#: templates/_nav.html:75 templates/_nav.html:88 templates/_nav_user.html:26
 #: templates/_nav_user.html:37
 msgid "Task List"
 msgstr "任务编排"
 
-#: templates/_nav.html:75 templates/_nav_user.html:27
+#: templates/_nav.html:76 templates/_nav_user.html:27
 msgid "Green List"
 msgstr "蓝绿发布"
 
-#: templates/_nav.html:76 templates/_nav_user.html:28
+#: templates/_nav.html:77 templates/_nav_user.html:28
 msgid "Gray List"
 msgstr "灰度发布"
 
-#: templates/_nav.html:77 templates/_nav_user.html:29
+#: templates/_nav.html:78 templates/_nav_user.html:29
 msgid "Rollback List"
 msgstr "秒级回滚"
 
-#: templates/_nav.html:84 templates/_nav_user.html:34
+#: templates/_nav.html:85 templates/_nav_user.html:34
 msgid "Monitor Center"
 msgstr "监控中心"
 
-#: templates/_nav.html:111
+#: templates/_nav.html:102
+msgid "File"
+msgstr "文件名"
+
+#: templates/_nav.html:105
+msgid "File Upload"
+msgstr "文件上传"
+
+#: templates/_nav.html:106
+msgid "File Download"
+msgstr "文件下载"
+
+#: templates/_nav.html:112
 msgid "XPack"
 msgstr ""
 
@@ -2305,7 +2388,7 @@ msgstr "回放会话"
 #: terminal/templates/terminal/session_detail.html:91
 #: terminal/templates/terminal/session_detail.html:100
 msgid "Go"
-msgstr ""
+msgstr "执行"
 
 #: terminal/templates/terminal/session_detail.html:97
 msgid "Monitor session"
@@ -2406,7 +2489,7 @@ msgid ""
 "You should use your ssh client tools connect terminal: {} <br /> <br />{}"
 msgstr "你可以使用ssh客户端工具连接终端"
 
-#: users/api.py:235 users/templates/users/login.html:50
+#: users/api.py:235 users/templates/users/login.html:44
 msgid "Log in frequently and try again later"
 msgstr "登录频繁, 稍后重试"
 
@@ -2733,7 +2816,7 @@ msgstr "下一步"
 
 #: users/templates/users/first_login_done.html:31
 #, fuzzy
-#| msgid "Welcome to use oms, visit "
+#| msgid "Welcome to use glance, visit "
 msgid "Welcome to use jumpserver, visit "
 msgstr "欢迎使用Jumpserver开源跳板机系统"
 
@@ -2746,7 +2829,7 @@ msgid " for more information"
 msgstr "获取更多信息"
 
 #: users/templates/users/forgot_password.html:26
-#: users/templates/users/login.html:77
+#: users/templates/users/login.html:71
 msgid "Forgot password"
 msgstr "忘记密码"
 
@@ -2754,7 +2837,7 @@ msgstr "忘记密码"
 msgid "Input your email, that will send a mail to your"
 msgstr "输入您的邮箱, 将会发一封重置邮件到您的邮箱中"
 
-#: users/templates/users/login.html:53
+#: users/templates/users/login.html:47
 msgid "Captcha invalid"
 msgstr "验证码错误"
 
@@ -3299,54 +3382,3 @@ msgstr "MFA 解绑成功"
 #: users/views/user.py:573
 msgid "MFA disable success, return login page"
 msgstr "MFA 解绑成功，返回登录页面"
-
-#~ msgid "Help"
-#~ msgstr "Help"
-
-#~ msgid "Docs"
-#~ msgstr "文档"
-
-#~ msgid "Admin"
-#~ msgstr "管理员"
-
-#~ msgid "Select admins"
-#~ msgstr "选择管理员"
-
-#~ msgid "Organization"
-#~ msgstr "组织管理"
-
-#~ msgid "Org detail"
-#~ msgstr "组织详情"
-
-#~ msgid "Add admin"
-#~ msgstr "添加管理员"
-
-#~ msgid "Create organization "
-#~ msgstr "创建组织"
-
-#~ msgid "Org"
-#~ msgstr "组织"
-
-#~ msgid "Org list"
-#~ msgstr "组织列表"
-
-#~ msgid "Orgs"
-#~ msgstr "组织"
-
-#~ msgid "Create org"
-#~ msgstr "创建组织"
-
-#~ msgid "Update org"
-#~ msgstr "更新组织"
-
-#~ msgid "* required Must set exact system platform, Windows, Linux ..."
-#~ msgstr "* required 必须准确设置操作系统平台，如Windows, Linux ..."
-
-#~ msgid "Unblock user successfully. "
-#~ msgstr "解除登录限制成功"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
-
-#~ msgid "MFA setting"
-#~ msgstr "MFA 设置"

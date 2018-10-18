@@ -5,11 +5,11 @@ import os
 from celery import Celery
 
 # set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'oms.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'glance.settings')
 
 from django.conf import settings
 
-app = Celery('oms')
+app = Celery('glance')
 
 # Using a string here means the worker will not have to
 # pickle the object when using Windows.

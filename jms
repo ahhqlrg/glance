@@ -120,7 +120,7 @@ def start_gunicorn():
     log_file = get_log_file_path(service)
 
     cmd = [
-        'gunicorn', 'oms.wsgi',
+        'gunicorn', 'glance.wsgi',
         '-b', bind,
         '-k', 'eventlet',
         '-w', str(WORKERS),
@@ -200,7 +200,7 @@ def start_beat():
 
 def start_service(s):
     print(time.ctime())
-    print('Jumpserver version {}, more see https://www.oms.org'.format(
+    print('Glance version {}, more see https://www.glance.org'.format(
         __version__))
 
     services_handler = {
@@ -285,7 +285,7 @@ def show_service_status(s):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="""
-        Jumpserver service control tools;
+        Glance control tools;
 
         Example: \r\n
 
