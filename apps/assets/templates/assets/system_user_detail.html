@@ -227,7 +227,7 @@ function updateSystemUserNode(nodes) {
         // remove all the selected groups from select > option and rendered ul element;
         $('.select2-selection__rendered').empty();
         $('#node_selected').val('');
-        $.map(jumpserver.nodes_selected, function(node_name, index) {
+        $.map(glance.nodes_selected, function(node_name, index) {
             $('#opt_' + index).remove();
             // change tr html of user groups.
             $('.node_edit tbody').append(
@@ -238,7 +238,7 @@ function updateSystemUserNode(nodes) {
             )
         });
         // clear glance.groups_selected
-        jumpserver.nodes_selected = {};
+        glance.nodes_selected = {};
     };
     APIUpdateAttr({
         url: the_url,
@@ -246,7 +246,7 @@ function updateSystemUserNode(nodes) {
         success: success
     });
 }
-jumpserver.nodes_selected = {};
+glance.nodes_selected = {};
 $(document).ready(function () {
     if($('#id_protocol_type').text() === 'rdp'){
         $('.only-ssh').addClass('hidden')
@@ -255,11 +255,11 @@ $(document).ready(function () {
     $('.select2').select2()
     .on('select2:select', function(evt) {
             var data = evt.params.data;
-            jumpserver.nodes_selected[data.id] = data.text;
+            glance.nodes_selected[data.id] = data.text;
     })
     .on('select2:unselect', function(evt) {
         var data = evt.params.data;
-        delete jumpserver.nodes_selected[data.id];
+        delete glance.nodes_selected[data.id];
     });
 })
 .on('click', '#btn-auto-push', function () {
@@ -274,13 +274,13 @@ $(document).ready(function () {
     });
 })
 .on('click', '#btn-add-to-node', function() {
-    if (Object.keys(jumpserver.nodes_selected).length === 0) {
+    if (Object.keys(glance.nodes_selected).length === 0) {
         return false;
     }
     var nodes = $('.bdg_node').map(function() {
         return $(this).data('gid');
     }).get();
-    $.map(jumpserver.nodes_selected, function(value, index) {
+    $.map(glance.nodes_selected, function(value, index) {
         nodes.push(index);
     });
     updateSystemUserNode(nodes);

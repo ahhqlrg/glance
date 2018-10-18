@@ -118,7 +118,7 @@
 {% endblock %}
 {% block custom_foot_js %}
 <script>
-jumpserver.users_selected = {};
+glance.users_selected = {};
 
 function updateGroupMember(users) {
     var the_url = "{% url 'api-users:user-group-update-user' pk=user_group.id %}";
@@ -129,7 +129,7 @@ function updateGroupMember(users) {
         // remove all the selected groups from select > option and rendered ul element;
         $('.select2-selection__rendered').empty();
         $('#slct_users').val('');
-        $.map(jumpserver.users_selected, function(user_name, index) {
+        $.map(glance.users_selected, function(user_name, index) {
             $('#opt_' + index).remove();
             // change tr html of users
             $('.user_edit tbody').append(
@@ -140,7 +140,7 @@ function updateGroupMember(users) {
             )
         });
         // clear glance.selected_groups
-        jumpserver.users_selected = {};
+        glance.users_selected = {};
     };
     APIUpdateAttr({
         url: the_url,
@@ -153,10 +153,10 @@ $(document).ready(function () {
    $('.select2').select2()
           .on('select2:select', function(evt) {
             var data = evt.params.data;
-            jumpserver.users_selected[data.id] = data.text;
+            glance.users_selected[data.id] = data.text;
         }).on('select2:unselect', function(evt) {
             var data = evt.params.data;
-            delete jumpserver.users_selected[data.id]
+            delete glance.users_selected[data.id]
         })
 }).on('click', '.btn_remove_user', function() {
     var $this = $(this);
@@ -173,13 +173,13 @@ $(document).ready(function () {
     }).get();
     updateGroupMember(users)
 }).on('click', '#btn_add_user', function() {
-    if (Object.keys(jumpserver.users_selected).length === 0) {
+    if (Object.keys(glance.users_selected).length === 0) {
         return false;
     }
     var users = $('.bdg_user').map(function() {
         return $(this).data('uid');
     }).get();
-    $.map(jumpserver.users_selected, function(value, index) {
+    $.map(glance.users_selected, function(value, index) {
         users.push(index);
         $('#opt_' + index).remove();
     });

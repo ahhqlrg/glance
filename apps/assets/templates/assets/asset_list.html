@@ -180,7 +180,7 @@ function initTable() {
         ],
         op_html: $('#actions').html()
     };
-    asset_table = jumpserver.initServerSideDataTable(options);
+    asset_table = glance.initServerSideDataTable(options);
     return asset_table
 }
 
@@ -644,7 +644,7 @@ $(document).ready(function(){
                 error: fail
             });
             $data_table.ajax.reload();
-            jumpserver.checked = false;
+            glance.checked = false;
         });
     }
     function doUpdate() {

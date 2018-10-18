@@ -58,7 +58,7 @@ $(document).ready(function() {
         order: [],
         op_html: $('#actions').html()
     };
-    jumpserver.initDataTable(options);
+    glance.initDataTable(options);
 }).on('click', '.btn_delete_user_group', function(){
     var $this = $(this);
     var group_id = $this.data('gid');
@@ -97,7 +97,7 @@ $(document).ready(function() {
             };
             var url_delete = the_url + '?id__in=' + JSON.stringify(plain_id_list);
             APIUpdateAttr({url: url_delete, method: 'DELETE', success: success, error: fail});
-            jumpserver.checked = false;
+            glance.checked = false;
         });
     }
     switch(action) {

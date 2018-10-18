@@ -180,7 +180,7 @@
 {% endblock %}
 {% block custom_foot_js %}
 <script>
-jumpserver.system_users_selected = {};
+glance.system_users_selected = {};
 
 function updateSystemUser(system_users) {
     var the_url = "{% url 'api-perms:asset-permission-detail' pk=object.id %}";
@@ -197,11 +197,11 @@ $(document).ready(function () {
     $('.select2').select2()
         .on('select2:select', function(evt) {
              var data = evt.params.data;
-             jumpserver.system_users_selected[data.id] = data.text;
+             glance.system_users_selected[data.id] = data.text;
         })
         .on('select2:unselect', function(evt) {
             var data = evt.params.data;
-            delete jumpserver.system_users_selected[data.id]
+            delete glance.system_users_selected[data.id]
         })
 })
 .on('click', '.btn-delete-perm', function () {
@@ -213,14 +213,14 @@ $(document).ready(function () {
     objectDelete($this, name, the_url, redirect_url);
 })
 .on('click', '#btn-add-system-user', function () {
-    if (Object.keys(jumpserver.system_users_selected).length === 0) {
+    if (Object.keys(glance.system_users_selected).length === 0) {
 		return false;
 	}
     var system_users = $('.bdg-system-user').map(function() {
         return $(this).data('uid');
     }).get();
 
-    $.map(jumpserver.system_users_selected, function(name, index) {
+    $.map(glance.system_users_selected, function(name, index) {
         system_users.push(index);
         $('#opt_' + index).remove();
         $('.group_edit tbody').append(

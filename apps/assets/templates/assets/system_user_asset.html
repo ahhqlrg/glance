@@ -118,20 +118,20 @@ function initAssetsTable() {
 		columns: [{data: "hostname" }, {data: "ip" }, {data: "port" }, {data: "hostname" }],
 		op_html: $('#actions').html()
 	};
-	jumpserver.initServerSideDataTable(options);
+	glance.initServerSideDataTable(options);
 }
 
 $(document).ready(function () {
 	$('.select2').select2()
 	.on("select2:select", function (evt) {
 		var data = evt.params.data;
-		jumpserver.assets_selected[data.id] = data.text;
-		jumpserver.asset_groups_selected[data.id] = data.text;
+		glance.assets_selected[data.id] = data.text;
+		glance.asset_groups_selected[data.id] = data.text;
 	})
 	.on('select2:unselect', function(evt) {
 		var data = evt.params.data;
-		delete jumpserver.assets_selected[data.id];
-		delete jumpserver.asset_groups_selected[data.id];
+		delete glance.assets_selected[data.id];
+		delete glance.asset_groups_selected[data.id];
 	});
 	initAssetsTable();
 })

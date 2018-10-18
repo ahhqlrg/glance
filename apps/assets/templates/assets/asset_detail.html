@@ -237,7 +237,7 @@
 {% endblock %}
 {% block custom_foot_js %}
 <script>
-jumpserver.nodes_selected = {};
+glance.nodes_selected = {};
 function updateAssetNodes(nodes) {
     var the_url = "{% url 'api-assets:asset-detail' pk=asset.id %}";
     var body = {
@@ -247,7 +247,7 @@ function updateAssetNodes(nodes) {
         // remove all the selected groups from select > option and rendered ul element;
         $('.select2-selection__rendered').empty();
         $('#groups_selected').val('');
-        $.map(jumpserver.nodes_selected, function(group_name, index) {
+        $.map(glance.nodes_selected, function(group_name, index) {
             $('#opt_' + index).remove();
             // change tr html of user groups.
             $('#add-asset2group tbody').append(
@@ -258,7 +258,7 @@ function updateAssetNodes(nodes) {
             )
         });
         // clear glance.groups_selected
-        jumpserver.nodes_selected = {};
+        glance.nodes_selected = {};
     };
     APIUpdateAttr({
         url: the_url,
@@ -286,10 +286,10 @@ function refreshAssetHardware() {
 $(document).ready(function () {
     $('.select2.groups').select2().on('select2:select', function(evt) {
         var data = evt.params.data;
-        jumpserver.nodes_selected[data.id] = data.text;
+        glance.nodes_selected[data.id] = data.text;
     }).on('select2:unselect', function(evt) {
         var data = evt.params.data;
-        delete jumpserver.nodes_selected[data.id]
+        delete glance.nodes_selected[data.id]
     });
 }).on('click', '#is_active', function () {
     var the_url = '{% url "api-assets:asset-detail" pk=asset.id %}';
@@ -310,13 +310,13 @@ $(document).ready(function () {
         $(".ibox-content > table > tbody > tr:nth-child(13) > td:last >b").html('False');
     }
 }).on('click', '#btn-update-nodes', function () {
-    if (Object.keys(jumpserver.nodes_selected).length === 0) {
+    if (Object.keys(glance.nodes_selected).length === 0) {
        return false;
     }
     var nodes = $('.bdg_node').map(function() {
         return $(this).data('gid');
     }).get();
-    $.map(jumpserver.nodes_selected, function(value, index) {
+    $.map(glance.nodes_selected, function(value, index) {
         nodes.push(index);
         $('#opt_' + index).remove();
     });

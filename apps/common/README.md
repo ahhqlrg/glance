@@ -25,7 +25,7 @@ you should run a redis instance
 	
 	or
 	
-	$ docker run -name jumpserver-redis -d -p 6379:6379 redis redis-server
+	$ docker run -name glance-redis -d -p 6379:6379 redis redis-server
 
 
 #### Write tasks in app_name/tasks.py
