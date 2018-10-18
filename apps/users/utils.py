@@ -24,7 +24,7 @@ from common.forms import SecuritySettingForm
 from .models import User, LoginLog
 
 
-logger = logging.getLogger('oms')
+logger = logging.getLogger('glance')
 
 
 class AdminUserRequiredMixin(UserPassesTestMixin):
@@ -261,7 +261,7 @@ def redirect_user_first_login_or_index(request, redirect_field_name):
         request.GET.get(redirect_field_name, reverse('index')))
 
 
-def generate_otp_uri(request, issuer="Jumpserver"):
+def generate_otp_uri(request, issuer="glance"):
     user = get_user_or_tmp_user(request)
     otp_secret_key = cache.get(request.session.session_key+'otp_key', '')
     if not otp_secret_key:

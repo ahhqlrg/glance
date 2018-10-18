@@ -1,0 +1,54 @@
+{% extends 'ops/_nav_tab.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap3 %}
+
+
+{% block tab %}
+<li class="active">
+    <a href="{% url 'ops:script-list' %}" class="text-center"><i class="fa fa-laptop"></i> {% trans 'Script' %} </a>
+</li>
+<li>
+    <a href="{% url 'ops:ansible-list' %}" class="text-center"><i class="fa fa-laptop"></i> {% trans 'Ansible' %} </a>
+</li>
+<li>
+    <a href="{% url 'ops:ansible-list' %}" class="text-center"><i class="fa fa-laptop"></i> {% trans 'Salt' %} </a>
+</li>
+{% endblock %}
+
+{% block table_container %}
+<form method="post" class="form-horizontal" action="" >
+    {% csrf_token %}
+    <div class="hr-line-dashed"></div>
+    <h3>{% trans 'Basic' %}</h3>
+    {% bootstrap_field form.task_name layout="horizontal" %}
+    <div class="hr-line-dashed"></div>
+    <h3>{% trans 'User' %}</h3>
+    {% bootstrap_field form.users layout="horizontal" %}
+    {% bootstrap_field form.user_groups layout="horizontal" %}
+    <div class="hr-line-dashed"></div>
+    <h3>{% trans 'script' %}</h3>
+    {% bootstrap_field form.script_name layout="horizontal" %}
+    <div class="hr-line-dashed"></div>
+    <h3>{% trans 'Other' %}</h3>
+    {% bootstrap_field form.comment layout="horizontal" %}
+
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <button class="btn btn-white" type="reset">{% trans 'Reset' %}</button>
+            <button id="submit_button" class="btn btn-primary" type="submit">{% trans 'Submit' %}</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block custom_foot_js %}
+<script>
+$(document).ready(function () {
+    $('.select2').select2({
+        closeOnSelect: false
+    });
+})
+
+</script>
+{% endblock %}

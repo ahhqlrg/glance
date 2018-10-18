@@ -11,7 +11,7 @@ __all__ = [
 
 class JMSInventory(BaseInventory):
     """
-    JMS Inventory is the manager with oms assets, so you can
+    JMS Inventory is the manager with glance assets, so you can
     write you own manager, construct you inventory
     """
     def __init__(self, hostname_list, run_as_admin=False, run_as=None, become_info=None):

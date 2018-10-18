@@ -1,4 +1,4 @@
-//oms 自定义js 2015-01-29
+//glance 自定义js 2015-01-29
 
 //此函数用于checkbox的全选和反选
 var checked=false;
@@ -288,10 +288,10 @@ function makeLabel(data) {
 
 
 
-var jumpserver = {};
-jumpserver.checked = false;
-jumpserver.selected = {};
-jumpserver.language = {
+var glance = {};
+glance.checked = false;
+glance.selected = {};
+glance.language = {
     processing: "加载中",
     search: "搜索",
     select: {
@@ -313,7 +313,7 @@ jumpserver.language = {
         last: "»"
     }
 };
-jumpserver.initDataTable = function (options) {
+glance.initDataTable = function (options) {
   // options = {
   //    ele *: $('#dataTable_id'),
   //    ajax_url *: '{% url 'users:user-list-api' %}',
@@ -356,17 +356,17 @@ jumpserver.initDataTable = function (options) {
         },
         columns: options.columns || [],
         select: options.select || select,
-        language: jumpserver.language,
+        language: glance.language,
         lengthMenu: [[10, 15, 25, 50, -1], [10, 15, 25, 50, "All"]]
     });
     table.on('select', function(e, dt, type, indexes) {
         var $node = table[ type ]( indexes ).nodes().to$();
         $node.find('input.ipt_check').prop('checked', true);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = true
+        glance.selected[$node.find('input.ipt_check').prop('id')] = true
     }).on('deselect', function(e, dt, type, indexes) {
         var $node = table[ type ]( indexes ).nodes().to$();
         $node.find('input.ipt_check').prop('checked', false);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = false
+        glance.selected[$node.find('input.ipt_check').prop('id')] = false
     }).on('draw', function(){
         $('#op').html(options.op_html || '');
         $('#uc').html(options.uc_html || '');
@@ -380,11 +380,11 @@ jumpserver.initDataTable = function (options) {
     $('.ipt_check_all').on('click', function() {
       if ($(this).prop("checked")) {
           $(this).closest('table').find('.ipt_check').prop('checked', true);
-          jumpserver.checked = true;
+          glance.checked = true;
           table.rows({search:'applied', page:'current'}).select();
       } else {
           $(this).closest('table').find('.ipt_check').prop('checked', false);
-          jumpserver.checked = false;
+          glance.checked = false;
           table.rows({search:'applied', page:'current'}).deselect();
       }
     });
@@ -392,17 +392,17 @@ jumpserver.initDataTable = function (options) {
     return table;
 };
 
-jumpserver.initStaticTable = function (selector) {
+glance.initStaticTable = function (selector) {
     $(selector).DataTable({
         "searching": false,
         "bInfo": false,
         "paging": false,
         "order": [],
-        "language": jumpserver.language
+        "language": glance.language
     });
 };
 
-jumpserver.initServerSideDataTable = function (options) {
+glance.initServerSideDataTable = function (options) {
   // options = {
   //    ele *: $('#dataTable_id'),
   //    ajax_url *: '{% url 'users:user-list-api' %}',
@@ -490,14 +490,14 @@ jumpserver.initServerSideDataTable = function (options) {
         },
         columns: options.columns || [],
         select: options.select || select,
-        language: jumpserver.language,
+        language: glance.language,
         lengthMenu: [[10, 15, 25, 50], [10, 15, 25, 50]]
     });
     table.selected = [];
     table.on('select', function(e, dt, type, indexes) {
         var $node = table[ type ]( indexes ).nodes().to$();
         $node.find('input.ipt_check').prop('checked', true);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = true;
+        glance.selected[$node.find('input.ipt_check').prop('id')] = true;
         if (type === 'row') {
             var rows = table.rows(indexes).data();
             $.each(rows, function (id, row) {
@@ -509,7 +509,7 @@ jumpserver.initServerSideDataTable = function (options) {
     }).on('deselect', function(e, dt, type, indexes) {
         var $node = table[ type ]( indexes ).nodes().to$();
         $node.find('input.ipt_check').prop('checked', false);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = false;
+        glance.selected[$node.find('input.ipt_check').prop('id')] = false;
         if (type === 'row') {
             var rows = table.rows(indexes).data();
             $.each(rows, function (id, row) {
@@ -549,7 +549,7 @@ jumpserver.initServerSideDataTable = function (options) {
         }
     });
 
-    // oms.table = table;
+    // glance.table = table;
     return table;
 };
 

@@ -1,10 +1,10 @@
 """
-    oms.config
+    glance.config
     ~~~~~~~~~~~~~~~~~
 
-    Jumpserver project setting file
+    Glance project setting file
 
-    :copyright: (c) 2014-2017 by Jumpserver Team
+    :copyright: (c) 2014-2017 by Glance Team
     :license: GPL v2, see LICENSE for more details.
 """
 import os
@@ -38,9 +38,9 @@ class Config:
     # DB_ENGINE = os.environ.get("DB_ENGINE") or 'mysql'
     # DB_HOST = os.environ.get("DB_HOST") or '127.0.0.1'
     # DB_PORT = os.environ.get("DB_PORT") or 3306
-    # DB_USER = os.environ.get("DB_USER") or 'oms'
+    # DB_USER = os.environ.get("DB_USER") or 'glance'
     # DB_PASSWORD = os.environ.get("DB_PASSWORD") or 'weakPassword'
-    # DB_NAME = os.environ.get("DB_NAME") or 'oms'
+    # DB_NAME = os.environ.get("DB_NAME") or 'glance'
 
     # When Django start it will bind this host and port
     # ./manage.py runserver 127.0.0.1:8080
@@ -62,7 +62,13 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    pass
+    LOG_LEVEL = 'WARNING'
+    DB_ENGINE = 'mysql'
+    DB_HOST = '127.0.0.1'
+    DB_PORT = 3306
+    DB_USER = 'glance'
+    DB_PASSWORD = '123456'
+    DB_NAME = 'glance'
 
 
 class TestConfig(Config):

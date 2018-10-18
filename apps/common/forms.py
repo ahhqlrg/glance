@@ -68,7 +68,7 @@ class BaseForm(forms.Form):
 class BasicSettingForm(BaseForm):
     SITE_URL = forms.URLField(
         label=_("Current SITE URL"),
-        help_text="eg: http://oms.abc.com:8080"
+        help_text="eg: http://127.0.0.1:8080"
     )
     USER_GUIDE_URL = forms.URLField(
         label=_("User Guide URL"), required=False,
@@ -76,17 +76,17 @@ class BasicSettingForm(BaseForm):
     )
     EMAIL_SUBJECT_PREFIX = forms.CharField(
         max_length=1024, label=_("Email Subject Prefix"),
-        initial="[Jumpserver] "
+        initial="[glance] "
     )
 
 
 class EmailSettingForm(BaseForm):
     EMAIL_HOST = forms.CharField(
-        max_length=1024, label=_("SMTP host"), initial='smtp.oms.org'
+        max_length=1024, label=_("SMTP host"), initial='smtp.glance.org'
     )
     EMAIL_PORT = forms.CharField(max_length=5, label=_("SMTP port"), initial=25)
     EMAIL_HOST_USER = forms.CharField(
-        max_length=128, label=_("SMTP user"), initial='noreply@oms.org'
+        max_length=128, label=_("SMTP user"), initial='noreply@glance.org'
     )
     EMAIL_HOST_PASSWORD = forms.CharField(
         max_length=1024, label=_("SMTP password"), widget=forms.PasswordInput,
@@ -107,14 +107,14 @@ class LDAPSettingForm(BaseForm):
         label=_("LDAP server"), initial='ldap://localhost:389'
     )
     AUTH_LDAP_BIND_DN = forms.CharField(
-        label=_("Bind DN"), initial='cn=admin,dc=oms,dc=org'
+        label=_("Bind DN"), initial='cn=admin,dc=glance,dc=org'
     )
     AUTH_LDAP_BIND_PASSWORD = forms.CharField(
         label=_("Password"), initial='',
         widget=forms.PasswordInput, required=False
     )
     AUTH_LDAP_SEARCH_OU = forms.CharField(
-        label=_("User OU"), initial='ou=tech,dc=oms,dc=org',
+        label=_("User OU"), initial='ou=tech,dc=glance,dc=org',
         help_text=_("Use | split User OUs")
     )
     AUTH_LDAP_SEARCH_FILTER = forms.CharField(
@@ -129,7 +129,7 @@ class LDAPSettingForm(BaseForm):
             "email": "mail"
         }),
         help_text=_(
-            "User attr map present how to map LDAP user attr to oms, username,name,email is oms attr")
+            "User attr map present how to map LDAP user attr to glance, username,name,email is glance attr")
     )
     # AUTH_LDAP_GROUP_SEARCH_OU = CONFIG.AUTH_LDAP_GROUP_SEARCH_OU
     # AUTH_LDAP_GROUP_SEARCH_FILTER = CONFIG.AUTH_LDAP_GROUP_SEARCH_FILTER

@@ -18,10 +18,10 @@ from .views import IndexView, LunaView
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Jumpserver API Docs",
+      title="Glance API Docs",
       default_version='v1',
-      description="Jumpserver Restful api docs",
-      terms_of_service="https://www.oms.org",
+      description="Glance Restful api docs",
+      terms_of_service="https://www.glance.org",
       contact=openapi.Contact(email="support@fit2cloud.com"),
       license=openapi.License(name="GPLv2 License"),
    ),

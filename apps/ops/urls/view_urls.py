@@ -18,4 +18,7 @@ urlpatterns = [
     path('adhoc/<uuid:pk>/history/', views.AdHocHistoryView.as_view(), name='adhoc-history'),
     path('adhoc/history/<uuid:pk>/', views.AdHocHistoryDetailView.as_view(), name='adhoc-history-detail'),
     path('celery/task/<uuid:pk>/log/', views.CeleryTaskLogView.as_view(), name='celery-task-log'),
+    path('job/script/', views.ScriptListView.as_view(), name='script-list'),
+    path('job/script/create/', views.ScriptCreateView.as_view(), name='script-create'),
+    path('job/ansbile/', views.AnsibleListView.as_view(), name='ansible-list'),
 ]
