@@ -1,7 +1,7 @@
 更新升级
 -------------
 
-1. 升级 Jumpserver
+1. 升级 Glance
 
 ::
 
@@ -15,44 +15,44 @@
 
 3. 升级 Luna
 
-重新下载 release 包（https://github.com/jumpserver/luna/releases）
+重新下载 release 包（https://github.com/glance/luna/releases）
 
 4. 升级 guacamole
 
 :: 
 
-    $ docker pull registry.jumpserver.org/public/guacamole:latest
+    $ docker pull registry.glance.org/public/guacamole:latest
     $ docker stop jms_guacamole  # 或者写guacamole的容器ID
     $ docker run --name jms_guacamole -d \
       -p 8081:8080 -v /opt/guacamole/key:/config/guacamole/key \
-      -e JUMPSERVER_KEY_DIR=/config/guacamole/key \
-      -e JUMPSERVER_SERVER=http://<填写本机的IP地址>:8080 \
-      registry.jumpserver.org/public/guacamole:latest
+      -e Glance_KEY_DIR=/config/guacamole/key \
+      -e Glance_SERVER=http://<填写本机的IP地址>:8080 \
+      registry.glance.org/public/guacamole:latest
 
 
 切换分支或离线升级
 -------------------------------
 
 
-**Jumpserver**
+**Glance**
 
-说明: 以下操作，都在jumpserver所在目录运行
+说明: 以下操作，都在glance所在目录运行
 
 1. 备份配置文件
 
 ::
 
-    $ jumpserver_backup=/tmp/jumpserver_backup
-    $ mkdir -p $jumpserver_backup
-    $ cp config.py $jumpserver_backup
+    $ glance_backup=/tmp/glance_backup
+    $ mkdir -p $glance_backup
+    $ cp config.py $glance_backup
 
 2. 备份migrations migrations中存的是数据库表结构的变更，切换分支会丢失
 
 ::
 
    $ for app in common users assets ops perms terminal;do
-      mkdir -p $jumpserver_backup/${app}_migrations
-      cp apps/${app}/migrations/*.py $jumpserver_backup/${app}_migrations
+      mkdir -p $glance_backup/${app}_migrations
+      cp apps/${app}/migrations/*.py $glance_backup/${app}_migrations
    done
 
 
@@ -60,13 +60,13 @@
 
 ::
 
-  $ mysqldump -u你的数据库账号 -h数据库地址 -p 数据库名称 > $jumpserver_backup/db_backup.sql
+  $ mysqldump -u你的数据库账号 -h数据库地址 -p 数据库名称 > $glance_backup/db_backup.sql
 
 4. 备份录像文件
 
 ::
 
-   $ cp -r data/media $jumpserver_backup/
+   $ cp -r data/media $glance_backup/
 
 5. 切换分支或下载离线包, 更新代码
 
@@ -79,21 +79,21 @@
 
 ::
 
-   $ cp $jumpserver_backup/config.py .
+   $ cp $glance_backup/config.py .
 
 7. 还原数据库表结构记录
 
 ::
 
    $ for app in common users assets ops perms terminal;do
-      cp $jumpserver_backup/${app}_migrations/*.py ${app}/migrations/
+      cp $glance_backup/${app}_migrations/*.py ${app}/migrations/
    done
 
 8. 还原录像文件
 
 ::
 
-   $ cp -r $jumpserver_backup/media/* data/media/
+   $ cp -r $glance_backup/media/* data/media/
 
 9. 更新依赖或表结构
 
@@ -111,7 +111,7 @@ coco是无状态的，备份 keys 目录即可
 
 ::
 
-   $ cp -r keys $jumpserver_backup/
+   $ cp -r keys $glance_backup/
 
 
 2. 离线更新升级coco
@@ -121,7 +121,7 @@ coco是无状态的，备份 keys 目录即可
 ::
 
    $ mv keys keys_backup
-   $ cp -r  $jumpserver_backup/keys .
+   $ cp -r  $glance_backup/keys .
 
 4. 升级依赖
 

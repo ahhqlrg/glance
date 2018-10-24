@@ -1,7 +1,7 @@
 快速安装
 ==========================
 
-Jumpserver 封装了一个 All in one Docker，可以快速启动。该镜像集成了所需要的组件(Windows组件未暂未集成)，也支持使用外置 Database 和 Redis
+Glance 封装了一个 All in one Docker，可以快速启动。该镜像集成了所需要的组件(Windows组件未暂未集成)，也支持使用外置 Database 和 Redis
 
 Tips: 不建议在生产中使用, 生产中请使用 详细安装 `CentOS <step_by_step.html>`_ `Ubuntu <setup_by_ubuntu.html>`_
 
@@ -13,7 +13,7 @@ Docker 安装见: `Docker官方安装文档 <https://docs.docker.com/install/>`_
 ```````````````
 使用 root 命令行输入::
 
-    $ docker run -d -p 8080:80 -p 2222:2222 registry.jumpserver.org/public/jumpserver:1.0.0
+    $ docker run -d -p 8080:80 -p 2222:2222 registry.glance.org/public/glance:1.0.0
 
 访问
 ```````````````
@@ -34,7 +34,7 @@ XShell等工具请添加connection连接
 - DB_PORT = 3306
 - DB_USER = xxx
 - DB_PASSWORD = xxxx
-- DB_NAME = jumpserver
+- DB_NAME = glance
 
 - REDIS_HOST = <redis-host>
 - REDIS_PORT = <redis-port>
@@ -42,13 +42,13 @@ XShell等工具请添加connection连接
 
  ::
 
-   docker run -d -p 8080:80 -p 2222:2222 -e DB_ENGINE=mysql -e DB_HOST=192.168.1.1 -e DB_PORT=3306 -e DB_USER=root -e DB_PASSWORD=xxx -e DB_NAME=jumpserver  registry.jumpserver.org/public/jumpserver:1.0.0
+   docker run -d -p 8080:80 -p 2222:2222 -e DB_ENGINE=mysql -e DB_HOST=192.168.1.1 -e DB_PORT=3306 -e DB_USER=root -e DB_PASSWORD=xxx -e DB_NAME=glance  registry.glance.org/public/glance:1.0.0
 
 
 仓库地址
 ```````````````
 
-https://github.com/jumpserver/Dockerfile
+https://github.com/glance/Dockerfile
 
 
 

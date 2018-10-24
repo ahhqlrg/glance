@@ -46,10 +46,10 @@
     $ python3 -m venv py3
     $ source /opt/py3/bin/activate
 
-    # 看到下面的提示符代表成功，以后运行 Jumpserver 都要先运行以上 source 命令，以下所有命令均在该虚拟环境中运行
+    # 看到下面的提示符代表成功，以后运行 Glance 都要先运行以上 source 命令，以下所有命令均在该虚拟环境中运行
     (py3) [root@localhost py3]
 
-二. 安装 Jumpserver 1.0.0
+二. 安装 Glance 1.0.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **2.1 下载或 Clone 项目**
@@ -59,13 +59,13 @@
 ::
 
     $ cd /opt/
-    $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git && cd jumpserver && git checkout master
+    $ git clone --depth=1 https://github.com/glance/glance.git && cd glance && git checkout master
 
 **2.2 安装依赖 RPM 包**
 
 ::
 
-    $ cd /opt/jumpserver/requirements
+    $ cd /opt/glance/requirements
     $ yum -y install $(cat rpm_requirements.txt)  # 如果没有任何报错请继续
 
 **2.3 安装 Python 库依赖**
@@ -74,7 +74,7 @@
 
     $ pip install -r requirements.txt  # 不要指定-i参数，因为镜像上可能没有最新的包，如果没有任何报错请继续
 
-**2.4 安装 Redis, Jumpserver 使用 Redis 做 cache 和 celery broke**
+**2.4 安装 Redis, Glance 使用 Redis 做 cache 和 celery broke**
 
 ::
 
@@ -95,21 +95,21 @@
     $ yum -y install mysql mysql-devel mysql-server
     $ service mysqld start
 
-**2.6 创建数据库 Jumpserver 并授权**
+**2.6 创建数据库 Glance 并授权**
 
 ::
 
     $ mysql
-    > create database jumpserver default charset 'utf8';
-    > grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by 'somepassword';
+    > create database glance default charset 'utf8';
+    > grant all on glance.* to 'glance'@'127.0.0.1' identified by 'somepassword';
 
-**2.7 修改 Jumpserver 配置文件**
+**2.7 修改 Glance 配置文件**
 
 ::
 
-    $ cd /opt/jumpserver
+    $ cd /opt/glance
     $ cp config_example.py config.py
-    $ vi config.py  # 我们计划修改 DevelopmentConfig中的配置，因为默认jumpserver是使用该配置，它继承自Config
+    $ vi config.py  # 我们计划修改 DevelopmentConfig中的配置，因为默认glance是使用该配置，它继承自Config
 
 **注意: 配置文件是 Python 格式，不要用 TAB，而要用空格**
 
@@ -120,9 +120,9 @@
         DB_ENGINE = 'mysql'
         DB_HOST = '127.0.0.1'
         DB_PORT = 3306
-        DB_USER = 'jumpserver'
+        DB_USER = 'glance'
         DB_PASSWORD = 'somepassword'
-        DB_NAME = 'jumpserver'
+        DB_NAME = 'glance'
 
     ...
 
@@ -132,18 +132,18 @@
 
 ::
 
-    $ cd /opt/jumpserver/utils
+    $ cd /opt/glance/utils
     $ bash make_migrations.sh
 
-**2.9 运行 Jumpserver**
+**2.9 运行 Glance**
 
 ::
 
-    $ cd /opt/jumpserver
+    $ cd /opt/glance
     $ python run_server.py all
 
 运行不报错，请浏览器访问 http://192.168.244.144:8080/
-(这里只是 Jumpserver, 没有 Web Terminal，所以访问 Web Terminal 会报错)
+(这里只是 Glance, 没有 Web Terminal，所以访问 Web Terminal 会报错)
 
 账号: admin 密码: admin
 
@@ -157,7 +157,7 @@
 ::
 
     $ cd /opt
-    $ git clone https://github.com/jumpserver/coco.git && cd coco && git checkout master
+    $ git clone https://github.com/glance/coco.git && cd coco && git checkout master
 
 
 **3.2 安装依赖**
@@ -176,11 +176,11 @@
     $ cp conf_example.py conf.py
     $ python run_server.py
 
-这时需要去 Jumpserver 管理后台-会话管理-终端管理（http://192.168.244.144:8080/terminal/terminal/）接受 Coco 的注册
+这时需要去 Glance 管理后台-会话管理-终端管理（http://192.168.244.144:8080/terminal/terminal/）接受 Coco 的注册
 
 ::
 
-    Coco version 0.4.0, more see https://www.jumpserver.org
+    Coco version 0.4.0, more see https://www.glance.org
     Starting ssh server at 0.0.0.0:2222
     Quit the server with CONTROL-C.
 
@@ -201,7 +201,7 @@
 
 Luna 已改为纯前端，需要 Nginx 来运行访问
 
-访问（https://github.com/jumpserver/luna/releases）下载对应版本的 release 包，直接解压，不需要编译
+访问（https://github.com/glance/luna/releases）下载对应版本的 release 包，直接解压，不需要编译
 
 4.1 解压 Luna
 
@@ -226,14 +226,14 @@ Luna 已改为纯前端，需要 Nginx 来运行访问
 
     docker run --name jms_guacamole -d \
       -p 8081:8080 -v /opt/guacamole/key:/config/guacamole/key \
-      -e JUMPSERVER_KEY_DIR=/config/guacamole/key \
-      -e JUMPSERVER_SERVER=http://<填写本机的IP地址>:8080 \
-      registry.jumpserver.org/public/guacamole:latest
+      -e Glance_KEY_DIR=/config/guacamole/key \
+      -e Glance_SERVER=http://<填写本机的IP地址>:8080 \
+      registry.glance.org/public/guacamole:latest
 
 这里所需要注意的是 guacamole 暴露出来的端口是 8081，若与主机上其他端口冲突请自定义一下。
 
-再次强调：修改 JUMPSERVER_SERVER 环境变量的配置，填上 Jumpserver 的内网地址, 这时
-去 Jumpserver-会话管理-终端管理 接受[Gua]开头的一个注册
+再次强调：修改 Glance_SERVER 环境变量的配置，填上 Glance 的内网地址, 这时
+去 Glance-会话管理-终端管理 接受[Gua]开头的一个注册
 
 
 
@@ -266,11 +266,11 @@ Luna 已改为纯前端，需要 Nginx 来运行访问
 
         location /media/ {
             add_header Content-Encoding gzip;
-            root /opt/jumpserver/data/;
+            root /opt/glance/data/;
         }
 
         location /static/ {
-            root /opt/jumpserver/data/;
+            root /opt/glance/data/;
         }
 
         location /socket.io/ {

@@ -20,19 +20,19 @@ QQ 群
 Github
 ~~~~~~~~
 	
-https://github.com/jumpserver/jumpserver.git
+https://github.com/glance/glance.git
 
 
 官网
 ~~~~~~~~
 
-http://www.jumpserver.org
+http://www.glance.org
 
 
 Demo
 ~~~~~~~~
 
-http://demo.jumpserver.org
+http://demo.glance.org
 
 
 邮件

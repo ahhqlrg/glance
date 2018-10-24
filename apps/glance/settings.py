@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-#boothli.....
 import os
 import sys
 
@@ -309,7 +308,7 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, 'i18n'), ]
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_DIR, "data", "static")
+STATIC_ROOT = os.path.join(PROJECT_DIR,"data", "static")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = (

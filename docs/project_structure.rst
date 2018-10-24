@@ -40,7 +40,7 @@
     │   ├── fixtures                    // 初始化数据目录
     │   │   ├── init.json               // 初始化项目数据库
     │   │   └── fake.json               // 生成大量测试数据
-    │   ├── jumpserver                  // 项目设置目录
+    │   ├── glance                  // 项目设置目录
     │   │    ├── __init__.py
     │   │    ├── settings.py            // 项目设置文件
     │   │    ├── urls.py                // 项目入口 Urlconf

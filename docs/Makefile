@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = Jumpserver
+SPHINXPROJ    = Glance
 SOURCEDIR     = .
 BUILDDIR      = _build
 
