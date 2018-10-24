@@ -30,5 +30,7 @@ celerybeat.pid
 django.db
 celerybeat-schedule.db
 data/static
+data/celery
+data/media
 docs/_build/
 xpack
