@@ -2,8 +2,24 @@
 from __future__ import unicode_literals
 from rest_framework import serializers
 
-from .models import Task, AdHoc, AdHocRunHistory
+from .models import Task, AdHoc, AdHocRunHistory,Script
 
+class ScriptCreateUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Script
+        #exclude = ('created_by', 'date_created')
+class ScriptListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Script
+        fields = '__all__'
+
+    @staticmethod
+    def get_inherit(obj):
+        if hasattr(obj, 'inherit'):
+            return obj.inherit
+        else:
+            return None
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:

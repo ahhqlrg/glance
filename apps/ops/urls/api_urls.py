@@ -12,6 +12,7 @@ router = DefaultRouter()
 router.register(r'tasks', api.TaskViewSet, 'task')
 router.register(r'adhoc', api.AdHocViewSet, 'adhoc')
 router.register(r'history', api.AdHocRunHistorySet, 'history')
+router.register(r'script', api.ScriptViewSet, 'script')
 
 urlpatterns = [
     path('tasks/<uuid:pk>/run/', api.TaskRun.as_view(), name='task-run'),
@@ -19,3 +20,4 @@ urlpatterns = [
 ]
 
 urlpatterns += router.urls
+print("--------------------ops-api----------",router.urls)
