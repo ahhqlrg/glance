@@ -15,9 +15,9 @@ sys.path.append(BASE_DIR)
 from apps import __version__
 
 try:
-    from config import config as CONFIG
+    from conf import config as CONFIG
 except ImportError:
-    print("Could not find config file, `cp config_example.py config.py`")
+    print("Could not find config file, `cp conf_example.py conf.py`")
     sys.exit(1)
 
 os.environ["PYTHONIOENCODING"] = "UTF-8"
@@ -41,6 +41,7 @@ try:
     os.makedirs(os.path.join(BASE_DIR, "data", "media"))
 except:
     pass
+
 
 def check_database_connection():
     os.chdir(os.path.join(BASE_DIR, 'apps'))
@@ -305,6 +306,7 @@ def show_service_status(s):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="""
+
         glance service control tools;
 
         Example: \r\n

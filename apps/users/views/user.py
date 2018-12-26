@@ -43,6 +43,7 @@ from ..utils import generate_otp_uri, check_otp_code, \
     is_need_unblock
 from ..signals import post_user_create
 
+
 __all__ = [
     'UserListView', 'UserCreateView', 'UserDetailView',
     'UserUpdateView',

@@ -243,4 +243,3 @@ class SecuritySettingForm(BaseForm):
         help_text=_('After opening, the user password changes '
                     'and resets must contain special characters')
     )
-

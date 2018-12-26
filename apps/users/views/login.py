@@ -8,6 +8,7 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.core.files.storage import default_storage
+
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import reverse, redirect
 from django.utils.decorators import method_decorator
@@ -47,6 +48,7 @@ class UserLoginView(FormView):
     form_class_captcha = forms.UserLoginCaptchaForm
     redirect_field_name = 'next'
     key_prefix_captcha = "_LOGIN_INVALID_{}"
+
 
     def get(self, request, *args, **kwargs):
         if request.user.is_staff:
@@ -195,6 +197,7 @@ class UserLoginOtpView(FormView):
         return redirect_user_first_login_or_index(self.request, self.redirect_field_name)
 
     def write_login_log(self, data):
+
         login_ip = get_request_ip(self.request)
         user_agent = self.request.META.get('HTTP_USER_AGENT', '')
         tmp_data = {

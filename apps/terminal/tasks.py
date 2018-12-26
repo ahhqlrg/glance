@@ -64,3 +64,4 @@ def clean_expired_session_period():
                 default_storage.delete(_local_path)
         # 删除session记录
         session.delete()
+

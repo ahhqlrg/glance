@@ -11,6 +11,7 @@ from django.core.mail import get_connection, send_mail
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
+
 from .permissions import IsOrgAdmin, IsSuperUser
 from .serializers import MailTestSerializer, LDAPTestSerializer
 from .models import Setting

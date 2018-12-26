@@ -77,5 +77,3 @@ class SystemUserSimpleSerializer(serializers.ModelSerializer):
         model = SystemUser
         fields = ('id', 'name', 'username')
 
-
-

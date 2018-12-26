@@ -46,4 +46,3 @@ class NodeAssetsSerializer(serializers.ModelSerializer):
 
 class NodeAddChildrenSerializer(serializers.Serializer):
     nodes = serializers.ListField()
-

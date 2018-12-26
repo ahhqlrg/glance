@@ -22,6 +22,7 @@ def send_mail_async(*args, **kwargs):
     Example:
     send_mail_sync.delay(subject, message, recipient_list, fail_silently=False, html_message=None)
     """
+
     if len(args) == 3:
         args = list(args)
         args[0] = settings.EMAIL_SUBJECT_PREFIX + args[0]

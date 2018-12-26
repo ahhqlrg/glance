@@ -21,7 +21,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'glance'
-copyright = '北京堆栈科技有限公司 © 2014-2018'
+copyright = 'Booth © 2018-2019'
 author = 'glance team'
 
 # The short X.Y version
@@ -110,7 +110,8 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'glance 文档'
+
+htmlhelp_basename = 'Glance 文档'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -137,6 +138,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
+
     (master_doc, 'glance.tex', 'glance Documentation',
      'glance team', 'manual'),
 ]

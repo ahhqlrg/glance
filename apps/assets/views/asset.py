@@ -74,6 +74,7 @@ class AssetCreateView(AdminUserRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'assets/asset_create.html'
     success_url = reverse_lazy('assets:asset-list')
 
+
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
         node_id = self.request.GET.get("node_id")

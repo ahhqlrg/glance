@@ -14,7 +14,6 @@ from .utils import write_login_log, send_password_expiration_reminder_mail
 
 logger = get_logger(__file__)
 
-
 @shared_task
 def write_login_log_async(*args, **kwargs):
     write_login_log(*args, **kwargs)

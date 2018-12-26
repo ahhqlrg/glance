@@ -74,6 +74,7 @@
 
     $ pip install -r requirements.txt  # 不要指定-i参数，因为镜像上可能没有最新的包，如果没有任何报错请继续
 
+
 **2.4 安装 Redis, glance 使用 Redis 做 cache 和 celery broke**
 
 ::
@@ -96,7 +97,6 @@
     $ service mysqld start
 
 **2.6 创建数据库 glance 并授权**
-
 ::
 
     $ mysql
@@ -143,7 +143,9 @@
     $ python run_server.py all
 
 运行不报错，请浏览器访问 http://192.168.244.144:8080/
-(这里只是 glance, 没有 Web Terminal，所以访问 Web Terminal 会报错)
+
+(这里只是 Glance, 没有 Web Terminal，所以访问 Web Terminal 会报错)
+
 
 账号: admin 密码: admin
 
@@ -175,6 +177,7 @@
     $ cd /opt/coco
     $ cp conf_example.py conf.py
     $ python run_server.py
+
 
 这时需要去 glance 管理后台-会话管理-终端管理（http://192.168.244.144:8080/terminal/terminal/）接受 Coco 的注册
 
@@ -231,6 +234,7 @@ Luna 已改为纯前端，需要 Nginx 来运行访问
       registry.glance.org/public/guacamole:latest
 
 这里所需要注意的是 guacamole 暴露出来的端口是 8081，若与主机上其他端口冲突请自定义一下。
+
 
 再次强调：修改 GLANCE_SERVER 环境变量的配置，填上 glance 的内网地址, 这时
 去 glance-会话管理-终端管理 接受[Gua]开头的一个注册

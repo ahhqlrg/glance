@@ -117,3 +117,4 @@ class DatetimeSearchMixin:
     def get(self, request, *args, **kwargs):
         self.get_date_range()
         return super().get(request, *args, **kwargs)
+

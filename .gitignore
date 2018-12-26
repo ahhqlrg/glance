@@ -17,6 +17,7 @@ dump.rdb
 .idea/
 db.sqlite3
 config.py
+migrations/
 *.log
 host_rsa_key
 *.bat
@@ -33,3 +34,7 @@ data/static
 docs/_build/
 xpack
 logs/*
+data/celery
+data/media
+docs/_build/
+xpack

@@ -23,6 +23,7 @@ class DomainSerializer(serializers.ModelSerializer):
 
 
 class GatewaySerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Gateway
         fields = [

@@ -31,6 +31,7 @@ urlpatterns = [
     path('assets/<uuid:pk>/gateway/',
          api.AssetGatewayApi.as_view(), name='asset-gateway'),
 
+
     path('admin-user/<uuid:pk>/nodes/',
          api.ReplaceNodesAdminUserApi.as_view(), name='replace-nodes-admin-user'),
     path('admin-user/<uuid:pk>/auth/',

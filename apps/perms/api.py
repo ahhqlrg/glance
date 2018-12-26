@@ -106,7 +106,6 @@ class UserGrantedAssetsApi(AssetsFilterMixin, ListAPIView):
             system_users_granted = [s for s in v if s.protocol == k.protocol]
             k.system_users_granted = system_users_granted
             queryset.append(k)
-
         return queryset
 
     def get_permissions(self):

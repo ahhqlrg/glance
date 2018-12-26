@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
 import os
 import sys
 
@@ -147,6 +146,26 @@ SESSION_COOKIE_DOMAIN = CONFIG.SESSION_COOKIE_DOMAIN
 CSRF_COOKIE_DOMAIN = CONFIG.CSRF_COOKIE_DOMAIN
 SESSION_COOKIE_AGE = CONFIG.SESSION_COOKIE_AGE
 SESSION_EXPIRE_AT_BROWSER_CLOSE = CONFIG.SESSION_EXPIRE_AT_BROWSER_CLOSE
+
+'''
+SESSION_COOKIE_NAME ＝ "sessionid"      # Session的cookie保存在浏览器上时的key，即：sessionid＝随机字符串（默认）
+
+SESSION_COOKIE_PATH ＝ "/"              # Session的cookie保存的路径（默认）
+
+SESSION_COOKIE_DOMAIN = None             # Session的cookie保存的域名（默认）
+
+SESSION_COOKIE_SECURE = False          # 是否Https传输cookie（默认）
+
+SESSION_COOKIE_HTTPONLY = True         # 是否Session的cookie只支持http传输（默认）
+
+SESSION_COOKIE_AGE = 1209600             # Session的cookie失效日期（2周）（默认）
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False    # 是否关闭浏览器使得Session过期（默认）
+
+SESSION_SAVE_EVERY_REQUEST = False        # 是否每次请求都保存Session，默认修改之后才保存(默认)
+
+'''
+
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 # Database
@@ -372,6 +391,7 @@ AUTH_LDAP_USER_ATTR_MAP = {"username": "cn", "name": "sn", "email": "mail"}
 # AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
 #    AUTH_LDAP_GROUP_SEARCH_OU, ldap.SCOPE_SUBTREE, AUTH_LDAP_GROUP_SEARCH_FILTER
 # )
+
 AUTH_LDAP_CONNECTION_OPTIONS = {
     ldap.OPT_TIMEOUT: 5
 }

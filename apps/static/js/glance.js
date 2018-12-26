@@ -233,6 +233,7 @@ function objectDelete(obj, name, url, redirectTo) {
         };
         var fail = function() {
             // swal("错误", "删除"+"[ "+name+" ]"+"遇到错误", "error");
+
             swal(gettext('Error'), "[ "+name+" ]" + gettext("Being used by the asset, please unbind the asset first."), "error");
         };
         APIUpdateAttr({
@@ -280,6 +281,7 @@ function orgDelete(obj, name, url, redirectTo){
             url: url,
             body: JSON.stringify(body),
             method: 'DELETE',
+
             success_message: gettext("Delete the success"),
             success: success,
             error: fail
