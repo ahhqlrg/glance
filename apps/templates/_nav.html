@@ -63,17 +63,15 @@
         <i class="fa fa-coffee" style="width: 14px"></i> <span class="nav-label">{% trans 'Job Center' %}</span><span class="fa arrow"></span>
     </a>
     <ul class="nav nav-second-level">
-        <li id="task"><a href="{% url 'ops:task-list' %}">{% trans 'Task list' %}</a></li>
+        <li id="task"><a href="{% url 'ops:task-list' %}">{% trans 'Task List' %}</a></li>
         <li id="command-execution"><a href="{% url 'ops:command-execution-start' %}">{% trans 'Command execution' %}</a></li>
         <li id="job"><a href="{% url 'ops:script-list' %}">{% trans 'Job List' %}</a></li>
         <li id="cron"><a href="#">{% trans 'Crontab' %}</a></li>
     </ul>
 </li>
-{% endif %}
-{% if request.user.is_superuser %}
-<li id="dev">
+<li id="dep">
     <a>
-        <i class="fa fa-eye-slash" style="width: 14px"></i> <span class="nav-label">{% trans 'Dev Center' %}</span><span class="fa arrow"></span>
+        <i class="fa fa-eye-slash" style="width: 14px"></i> <span class="nav-label">{% trans 'Dep Center' %}</span><span class="fa arrow"></span>
     </a>
     <ul class="nav nav-second-level">
         <li id="task"><a>{% trans 'Task List' %}</a></li>
@@ -82,8 +80,6 @@
         <li id="rollback"><a>{% trans 'Rollback List' %}</a></li>
     </ul>
 </li>
-{% endif %}
-{% if request.user.is_superuser %}
 <li id="monitor">
     <a>
         <i class="fa fa-shield" style="width: 14px"></i> <span class="nav-label">{% trans 'Monitor Center' %}</span><span class="fa arrow"></span>
@@ -92,7 +88,6 @@
         <li id="task"><a>{% trans 'Task List' %}</a></li>
     </ul>
 </li>
-{% endif %}
 <li id="audits">
     <a>
         <i class="fa fa-history" style="width: 14px"></i> <span class="nav-label">{% trans 'Audits' %}</span><span class="fa arrow"></span>
@@ -105,15 +100,15 @@
         <li id="command-execution-log"><a href="{% url 'audits:command-execution-log-list' %}">{% trans 'Command execution' %}</a></li>
     </ul>
 </li>
-<li id="file">
-    <a href="#">
-       <i class="fa fa-download"></i> <span class="nav-label">{% trans 'File' %}</span><span class="fa arrow"></span>
-    </a>
-    <ul class="nav nav-second-level">
-        <li id="upload"><a href="">{% trans 'File Upload' %}</a></li>
-        <li id="download"><a href="">{% trans 'File Download' %}</a></li>
-    </ul>
-</li>
+<!--<li id="file">-->
+    <!--<a href="#">-->
+       <!--<i class="fa fa-download"></i> <span class="nav-label">{% trans 'File' %}</span><span class="fa arrow"></span>-->
+    <!--</a>-->
+    <!--<ul class="nav nav-second-level">-->
+        <!--<li id="upload"><a href="">{% trans 'File Upload' %}</a></li>-->
+        <!--<li id="download"><a href="">{% trans 'File Download' %}</a></li>-->
+    <!--</ul>-->
+<!--</li>-->
 {% if XPACK_PLUGINS %}
 <li id="xpack">
     <a>

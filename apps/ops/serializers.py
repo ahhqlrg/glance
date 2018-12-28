@@ -4,6 +4,25 @@ from rest_framework import serializers
 from django.shortcuts import reverse
 
 from .models import Task, AdHoc, AdHocRunHistory, CommandExecution
+from .models import Script
+
+
+class ScriptCreateUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Script
+        #exclude = ('created_by', 'date_created')
+class ScriptListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Script
+        fields = '__all__'
+
+    @staticmethod
+    def get_inherit(obj):
+        if hasattr(obj, 'inherit'):
+            return obj.inherit
+        else:
+            return None
 
 
 class CeleryResultSerializer(serializers.Serializer):

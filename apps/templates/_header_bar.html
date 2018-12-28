@@ -10,44 +10,11 @@
             <!--</form>-->
         </div>
         <ul class="nav navbar-top-links navbar-right">
-{#            <li>#}
-{#                <span class="m-r-sm text-muted welcome-message">{% trans 'Welcome to use glance system' %}</span>#}
-{#            </li>#}
-
-{#            <li class="dropdown">#}
-{#                <a class="count-info" href="https://market.aliyun.com/products/53690006/cmgj026011.html?spm=5176.730005.0.0.cY2io1" target="_blank">#}
-{#                    <span class="m-r-sm text-muted welcome-message">{% trans 'Supports' %}</span>#}
-{#                </a>#}
-{#            </li>#}
-{#            <li class="dropdown">#}
-{#                <a class="count-info"  href="http://docs.glance.org/" target="_blank">#}
-{#                     <span class="m-r-sm text-muted welcome-message">{% trans 'Docs' %}</span>#}
-{#                </a>#}
-{#            </li>#}
-
             <li class="dropdown">
-                <a class="count-info dropdown-toggle" data-toggle="dropdown" href="#" target="_blank">
-                    <i class="fa fa-handshake-o"></i>
-                    <span class="m-r-sm text-muted welcome-message">{% trans 'Help' %} <b class="caret"></b></span>
-                </a>
-
-                <ul class="dropdown-menu animated fadeInRight m-t-xs profile-dropdown">
-                    <li>
-                        <a class="count-info"  href="" target="_blank">
-                            <i class="fa fa-file-text"></i>
-                            <span class="m-r-sm text-muted welcome-message">{% trans 'Docs' %}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="count-info" href="" target="_blank">
-                            <i class="fa fa-suitcase"></i>
-                            <span class="m-r-sm text-muted welcome-message">{% trans 'Commercial support' %}</span>
-                        </a>
-                    </li>
-                </ul>
-
+               <a class="count-info"  href="http://docs.glance.org/" target="_blank">
+                    <span class="m-r-sm text-muted welcome-message">{% trans 'Docs' %}</span>
+               </a>
             </li>
-
             <li class="dropdown">
                 <a class="count-info dropdown-toggle" data-toggle="dropdown" href="#" target="_blank">
                     <i class="fa fa-globe"></i>
@@ -73,7 +40,6 @@
                     </li>
                 </ul>
             </li>
-
 
             <li class="dropdown">
                 {% if request.user.is_authenticated %}

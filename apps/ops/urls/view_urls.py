@@ -21,4 +21,9 @@ urlpatterns = [
 
     path('command-execution/', views.CommandExecutionListView.as_view(), name='command-execution-list'),
     path('command-execution/start/', views.CommandExecutionStartView.as_view(), name='command-execution-start'),
+
+    path('job/script/', views.ScriptListView.as_view(), name='script-list'),
+    path('job/script/create/', views.ScriptCreateView.as_view(), name='script-create'),
+    path('job/ansbile/', views.AnsibleListView.as_view(), name='ansible-list'),
 ]
+

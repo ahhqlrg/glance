@@ -3063,7 +3063,6 @@ var SelectionManager = (function (_super) {
         this.clearSelection();
         e.inactiveBuffer.lines.off('trim', this._trimListener);
         e.activeBuffer.lines.on('trim', this._trimListener);
-
     };
     SelectionManager.prototype._convertViewportColToCharacterIndex = function (bufferLine, coords) {
         var charIndex = coords[0];

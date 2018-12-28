@@ -101,7 +101,13 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    pass
+    LOG_LEVEL = 'WARNING'
+    DB_ENGINE = 'mysql'
+    DB_HOST = '127.0.0.1'
+    DB_PORT = 3306
+    DB_USER = 'glance'
+    DB_PASSWORD = '123456'
+    DB_NAME = 'glance'
 
 
 class TestConfig(Config):

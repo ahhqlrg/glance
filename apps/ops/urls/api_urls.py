@@ -14,6 +14,9 @@ router.register(r'adhoc', api.AdHocViewSet, 'adhoc')
 router.register(r'history', api.AdHocRunHistoryViewSet, 'history')
 router.register(r'command-executions', api.CommandExecutionViewSet, 'command-execution')
 
+
+router.register(r'script', api.ScriptViewSet, 'script')
+
 urlpatterns = [
     path('tasks/<uuid:pk>/run/', api.TaskRun.as_view(), name='task-run'),
     path('celery/task/<uuid:pk>/log/', api.CeleryTaskLogApi.as_view(), name='celery-task-log'),

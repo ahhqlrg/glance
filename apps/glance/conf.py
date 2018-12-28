@@ -327,7 +327,7 @@ def load_user_config():
     sys.path.insert(0, PROJECT_DIR)
     config = Config(PROJECT_DIR, defaults)
     try:
-        from config import config as c
+        from conf import config as c
         config.from_object(c)
     except ImportError:
         msg = """
