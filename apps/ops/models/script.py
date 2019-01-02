@@ -27,7 +27,11 @@ class Script(OrgModelMixin):
         auto_now_add=True, null=True, blank=True, verbose_name=_('Date created')
     )
 
+    class Meta:
+        db_table = "ops_script"
+        ordering = ['task_name']
 
+    '''
     @classmethod
     def get_queryset_group_by_task_name(cls):
         names = cls.objects.values_list('task_name', flat=True)
@@ -37,10 +41,6 @@ class Script(OrgModelMixin):
 
     def __str__(self):
         return self.task_name
-
-    class Meta:
-        db_table = "ops_script"
-        ordering = ['task_name']
 
     @property
     def id_str(self):
@@ -53,3 +53,4 @@ class Script(OrgModelMixin):
             set_or_append_attr_bulk(_users, 'inherit', group.name)
             users.update(set(_users))
         return users
+    '''

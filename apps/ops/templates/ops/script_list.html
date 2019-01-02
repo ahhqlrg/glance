@@ -26,10 +26,12 @@
             <input type="checkbox" id="check_all" class="ipt_check_all" >
         </th>
         <th class="text-center">{% trans 'Name' %}</th>
-        <th class="text-center">{% trans 'User name' %}</th>
-        <th class="text-center">{% trans 'Asset' %}</th>
+        <!--<th class="text-center">{% trans 'Run as' %}</th>-->
+        <!--<th class="text-center">{% trans 'users' %}</th>-->
+        <!--<th class="text-center">{% trans 'User groups' %}</th>-->
+        <!--<th class="text-center">{% trans 'Asset' %}</th>-->
         <th class="text-center">{% trans 'Last update time' %}</th>
-        <th class="text-center">{% trans 'Execute result' %}</th>
+        <!--<th class="text-center">{% trans 'Execute result' %}</th>-->
         <th class="text-center">{% trans 'Comment' %}</th>
         <th class="text-center">{% trans 'Action' %}</th>
     </tr>
@@ -42,110 +44,54 @@
 
 
 {% block custom_foot_js %}
+<script src="{% static 'js/jquery.form.min.js' %}"></script>
 <script>
 function initTable() {
     var options = {
         ele: $('#script_list_table'),
         columnDefs: [
             {targets: 1, createdCell: function (td, cellData, rowData) {
-                var num=cellData.length;
-                $(td).html(num);
+                var detail_btn = '<a href="">' + cellData + '</a>';
+                $(td).html(detail_btn.replace("{{ DEFAULT_PK }}", rowData.id));
+                // if (rowData.id === 1 || rowData.username === "admin" || rowData.username === "{{ request.user.username }}") {
+                //     $(td).html(detail_btn.replace("{{ DEFAULT_PK }}", rowData.id));
+                // }
             }},
-            {targets: 3, createdCell: function (td, cellData) {
-                var num=cellData.length;
-                $(td).html(num);
-            }},
-            {targets: 4, createdCell: function (td, cellData) {
-                var num=cellData.length;
-                $(td).html(num);
-            }},
-            {targets: 5, createdCell: function (td, cellData, rowData) {
-                var num=cellData.length;
-                $(td).html(num);
 
-            }},
-            {targets: 7, createdCell: function (td, cellData, rowData) {
-                var update_btn = '<a href="{% url "ops:script-create" %}" class="btn btn-xs m-l-xs btn-info">{% trans "Update" %}</a>'.replace(, cellData);
-                var del_btn = '<a class="btn btn-xs btn-danger m-l-xs btn_admin_user_delete" data-uid="{{ DEFAULT_PK }}">{% trans "Delete" %}</a>'.replace(, cellData);
-                $(td).html(update_btn + del_btn)
-            }}],
+            {targets: 4, createdCell: function (td, cellData, rowData) {
+                var excute_btn = '<a href="" class="btn btn-xs btn-primary btn-run">{% trans "Run" %}</a>'
+                    .replace('{{ DEFAULT_PK }}', cellData);
+
+                var update_btn = '<a href="{% url "ops:script-update" pk=DEFAULT_PK %}" class="btn btn-xs m-l-xs btn-info">{% trans "Update" %}</a>'
+                    .replace('{{ DEFAULT_PK }}', cellData);
+
+                var del_btn = '<a class="btn btn-xs btn-danger m-l-xs btn_user_delete" data-uid="{{ DEFAULT_PK }}" data-name="99991938">{% trans "Delete" %}</a>'
+                            .replace('{{ DEFAULT_PK }}', cellData)
+                            .replace('99991938', rowData.name);
+                $(td).html(excute_btn + update_btn + del_btn)
+             }}
+        ],
         ajax_url: '{% url "api-ops:script-list" %}',
         columns: [
-            {data: "id" }, {data: "task_name" }, {data: "users" }, {data: "assets"}, {data: "date_created"}, {data: "result" },
+            {data: function (){ return ""}}, {data: "task_name" },
+            // {data: "users" },{data: "user_groups" },
+            {data: "date_created"},
             {data: "comment" }, {data: "id" }
         ],
-        op_html: $('#actions').html()
         };
-    glance.initDataTable(options);
+    var table = glance.initServerSideDataTable(options);
+    return table
 }
 
 $(document).ready(function(){
     initTable();
-})
-
-.on('click', '.btn_admin_user_delete', function () {
+}).on('click', '.btn_user_delete', function(){
     var $this = $(this);
-    var $data_table = $('#cluster_list_table').DataTable();
     var name = $(this).closest("tr").find(":nth-child(2)").children('a').html();
+    // toastr.error($(this).closest("tr").find(":nth-child(2)").children('a').html());
     var uid = $this.data('uid');
-    var the_url = '{% url "api-assets:system-user-detail" pk=DEFAULT_PK %}'.replace('{{ DEFAULT_PK }}', uid);
+    var the_url = '{% url "api-ops:script-detail" pk=DEFAULT_PK %}'.replace("{{ DEFAULT_PK }}", uid);
     objectDelete($this, name, the_url);
-    setTimeout( function () {
-        $data_table.ajax.reload();
-    }, 3000);
-})
-
-.on('click', '#btn_bulk_update', function () {
-    var action = $('#slct_bulk_update').val();
-    var $data_table = $('#system_user_list_table').DataTable();
-    var id_list = [];
-    var plain_id_list = [];
-    $data_table.rows({selected: true}).every(function(){
-        id_list.push({id: this.data().id});
-        plain_id_list.push(this.data().id);
-    });
-    if (id_list === []) {
-        return false;
-    }
-    var the_url = "{% url 'api-assets:system-user-list' %}";
-    function doDelete() {
-        swal({
-            title: "{% trans 'Are you sure?' %}",
-            text: "{% trans 'This will delete the selected System Users !!!' %}",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "{% trans 'Confirm' %}",
-            closeOnConfirm: false
-        }, function() {
-            var success = function() {
-                var msg = "{% trans 'System Users Deleted.' %}";
-                swal("{% trans 'System Users Delete' %}", msg, "success");
-                $('#system_user_list_table').DataTable().ajax.reload();
-            };
-            var fail = function() {
-                var msg = "{% trans 'System Users Deleting failed.' %}";
-                swal("{% trans 'System Users Delete' %}", msg, "error");
-            };
-            var url_delete = the_url + '?id__in=' + JSON.stringify(plain_id_list);
-            APIUpdateAttr({url: url_delete, method: 'DELETE', success: success, error: fail});
-            $data_table.ajax.reload();
-            glance.checked = false;
-        });
-    }
-    function doUpdate() {
-{#        TODO: bulk update the System Users #}
-    }
-    switch (action) {
-        case 'delete':
-            doDelete();
-            break;
-        case 'update':
-            doUpdate();
-            break;
-        default:
-            break;
-    }
 })
 </script>
 {% endblock %}

@@ -7,14 +7,9 @@
 
 ----
 
-glance是全球首款完全开源的堡垒机，使用GNU GPL v2.0开源协议，是符合 4A 的专业运维审计系统。
-
-glance使用Python / Django 进行开发，遵循 Web 2.0 规范，配备了业界领先的 Web Terminal 解决方案，交互界面美观、用户体验好。
-
-glance采纳分布式架构，支持多机房跨区域部署，中心节点提供 API，各机房部署登录节点，可横向扩展、无并发限制。
-
-改变世界，从一点点开始。
-
+Glance系统拥有业界自动化运维的全新玩法，整合业界最流行的前沿技术和思想，打通运维各个环节，实现咖啡运维梦想。
+Glance堡垒机，支持登陆，审计,设备资产管理平台等操作。
+Glance一款代码部署、应用部署、计划任务、脚本管理等让用户代码发布终于可以不只能选择 jenkins！支持各种web代码发布，php、java、python、go等代码的发布、回滚可以通过web来一键完成。
 ----
 
 ### 功能
@@ -33,22 +28,8 @@ glance采纳分布式架构，支持多机房跨区域部署，中心节点提�
 
 我们提供了DEMO和截图可以让你快速了解glance
 
-[DEMO](https://demo.glance.org)
-[截图](http://docs.glance.org/zh/docs/snapshot.html)
-
-### SDK
-
-我们还编写了一些SDK，供你其它系统快速和glance APi交互，
-
-- [python](https://github.com/glance/glance-python-sdk) glance其它组件使用这个SDK完成交互
-- [java](https://github.com/KaiJunYan/glance-java-sdk.git) 恺珺同学提供的Java版本的SDK
+![](https://raw.github.com/ahhqlrg/glance/master/screenshot/job1.png)
+![](https://raw.github.com/ahhqlrg/glance/master/screenshot/job2.png)
 
 
-### License & Copyright
-Copyright (c) 2014-2018 Beijing Duizhan Tech, Inc., All rights reserved.
 
-Licensed under The GNU General Public License version 2 (GPLv2)  (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-https://www.gnu.org/licenses/gpl-2.0.html
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

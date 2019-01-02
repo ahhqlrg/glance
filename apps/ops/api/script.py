@@ -1,26 +1,55 @@
 # ~*~ coding: utf-8 ~*~
 
 from rest_framework import viewsets, generics
-
-from common.permissions import IsOrgAdmin
+from rest_framework_bulk import BulkModelViewSet
+from rest_framework.pagination import LimitOffsetPagination
+from common.permissions import IsValidUser
 from ..models import  Script
 from ..serializers import ScriptCreateUpdateSerializer, ScriptListSerializer
 
 
 
 
-class ScriptViewSet(viewsets.ModelViewSet):
+class ScriptViewSet(BulkModelViewSet):
     """
       script授权列表的增删改查api
     """
+    filter_fields = ('task_name','id')
+    search_fields = filter_fields
     queryset = Script.objects.all()
-    serializer_class = ScriptCreateUpdateSerializer
-    permission_classes = (IsOrgAdmin,)
+    serializer_class = ScriptListSerializer
+    permission_classes = (IsValidUser,)
+    pagination_class = LimitOffsetPagination
 
-    def get_serializer_class(self):
-        if self.action in ("list", 'retrieve'):
-            return ScriptListSerializer
-        return ScriptListSerializer
+
+
+
+    # def get_queryset(self):
+    #     queryset = current_org.get_org_users()
+    #     return queryset
+
+    # def get_permissions(self):
+    #     if self.action == "retrieve":
+    #         self.permission_classes = (IsOrgAdminOrAppUser,)
+    #     return super().get_permissions()
+    #
+    def allow_bulk_destroy(self, qs, filtered):
+        return qs.count() == filtered.count()
+
+
+
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return super().get_queryset()
+        return Script.objects.filter(
+           users=str(self.request.user.id)
+        )
+
+
+    # def get_serializer_class(self):
+    #     if self.action in ("list", 'retrieve'):
+    #         return ScriptListSerializer
+    #     return ScriptListSerializer
     """
     def get_queryset(self):
         queryset = super().get_queryset()

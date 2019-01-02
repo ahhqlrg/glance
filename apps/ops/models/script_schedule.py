@@ -11,8 +11,10 @@ from orgs.mixins import OrgModelMixin, OrgManager
 __all__ = ["ScriptSchedule"]
 
 
-
 class ScriptSchedule(OrgModelMixin):
+    RESULT_CHOICE = [
+        (0, _('Failed')), (1, _('Success')), (2, _('Runing'))
+    ]
 
     id = models.UUIDField(default=uuid.uuid4, primary_key=True)
     task_name = models.ForeignKey("ops.Script",on_delete=models.CASCADE,related_name='task_name_by_schedule',verbose_name=_("Task name"))
@@ -20,7 +22,7 @@ class ScriptSchedule(OrgModelMixin):
     assets = models.ManyToManyField('assets.Asset', related_name='schedule_by_permissions', blank=True,verbose_name=_("Asset"))
     nodes = models.ManyToManyField('assets.Node', related_name='schedule_by_permissions', blank=True,verbose_name=_("Nodes"))
 
-    result = models.BooleanField(default=False, verbose_name=_('Result'))
+    result = models.CharField(choices=RESULT_CHOICE,default='',max_length=10, verbose_name=_('Result'))
     log = models.TextField(blank=True, null=True, verbose_name=_("Schedule log"))
     date_created = models.DateTimeField(
         auto_now_add=True, null=True, blank=True, verbose_name=_('Date created')

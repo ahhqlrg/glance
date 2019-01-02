@@ -24,6 +24,7 @@ urlpatterns = [
 
     path('job/script/', views.ScriptListView.as_view(), name='script-list'),
     path('job/script/create/', views.ScriptCreateView.as_view(), name='script-create'),
+    path('job/<uuid:pk>/update/', views.ScriptUpdateView.as_view(), name='script-update'),
     path('job/ansbile/', views.AnsibleListView.as_view(), name='ansible-list'),
 ]
 

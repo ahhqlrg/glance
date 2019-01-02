@@ -17,12 +17,12 @@ class ScriptListSerializer(serializers.ModelSerializer):
         model = Script
         fields = '__all__'
 
-    @staticmethod
-    def get_inherit(obj):
-        if hasattr(obj, 'inherit'):
-            return obj.inherit
-        else:
-            return None
+    # @staticmethod
+    # def get_inherit(obj):
+    #     if hasattr(obj, 'inherit'):
+    #         return obj.inherit
+    #     else:
+    #         return None
 
 
 class CeleryResultSerializer(serializers.Serializer):

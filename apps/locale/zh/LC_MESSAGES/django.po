@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glance 0.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-27 15:35+0800\n"
+"POT-Creation-Date: 2018-12-28 13:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: ibuler <ibuler@qq.com>\n"
 "Language-Team: glance team<ibuler@qq.com>\n"
@@ -29,7 +29,7 @@ msgstr "测试节点下资产是否可连接: {}"
 #: assets/models/user.py:133 assets/templates/assets/asset_detail.html:191
 #: assets/templates/assets/asset_detail.html:199
 #: assets/templates/assets/system_user_asset.html:95
-#: ops/models/script_schedule.py:21 perms/models.py:32
+#: ops/models/script_schedule.py:23 perms/models.py:32
 msgid "Nodes"
 msgstr "节点管理"
 
@@ -109,7 +109,7 @@ msgstr "端口"
 #: assets/templates/assets/system_user_list.html:33 audits/models.py:18
 #: audits/templates/audits/ftp_log_list.html:41
 #: audits/templates/audits/ftp_log_list.html:71
-#: ops/models/script_schedule.py:20 ops/templates/ops/salt_list.html:30
+#: ops/models/script_schedule.py:22 ops/templates/ops/salt_list.html:30
 #: ops/templates/ops/script_list.html:30 perms/forms.py:33 perms/models.py:31
 #: perms/templates/perms/asset_permission_create_update.html:40
 #: perms/templates/perms/asset_permission_list.html:56
@@ -379,7 +379,7 @@ msgstr "创建者"
 #: assets/templates/assets/cmd_filter_detail.html:69
 #: assets/templates/assets/domain_detail.html:68
 #: assets/templates/assets/system_user_detail.html:96 ops/models/script.py:27
-#: ops/models/script_schedule.py:26 ops/templates/ops/adhoc_detail.html:90
+#: ops/models/script_schedule.py:28 ops/templates/ops/adhoc_detail.html:90
 #: ops/templates/ops/task_detail.html:64 orgs/models.py:16 perms/models.py:38
 #: perms/models.py:85 perms/templates/perms/asset_permission_detail.html:94
 #: terminal/templates/terminal/terminal_detail.html:59
@@ -604,7 +604,7 @@ msgstr "默认资产组"
 #: audits/templates/audits/operate_log_list.html:66
 #: audits/templates/audits/password_change_log_list.html:33
 #: audits/templates/audits/password_change_log_list.html:50 ops/forms.py:53
-#: ops/models/script.py:21 ops/models/script_schedule.py:19
+#: ops/models/script.py:21 ops/models/script_schedule.py:21
 #: ops/templates/ops/command_execution_list.html:34
 #: ops/templates/ops/command_execution_list.html:59
 #: ops/templates/ops/script_create_update.html:26 perms/forms.py:27
@@ -1641,6 +1641,7 @@ msgid "Filename"
 msgstr "文件名"
 
 #: audits/models.py:22 audits/templates/audits/ftp_log_list.html:76
+#: ops/models/script_schedule.py:16
 #: ops/templates/ops/command_execution_list.html:64
 #: ops/templates/ops/task_list.html:39 users/models/authentication.py:73
 #: users/templates/users/user_detail.html:456
@@ -2332,7 +2333,7 @@ msgstr "结果"
 msgid "Adhoc result summary"
 msgstr "汇总"
 
-#: ops/models/command.py:20 ops/models/script_schedule.py:23
+#: ops/models/command.py:20 ops/models/script_schedule.py:25
 msgid "Result"
 msgstr "结果"
 
@@ -2348,18 +2349,24 @@ msgstr "命令 `{}` 不允许被执行 ......."
 msgid "Task end"
 msgstr "任务结束"
 
-#: ops/models/script.py:19 ops/models/script_schedule.py:18
+#: ops/models/script.py:19 ops/models/script_schedule.py:20
 #: ops/templates/ops/adhoc_history_detail.html:53
 msgid "Task name"
 msgstr "任务名称"
 
 #: ops/models/script.py:24
-#, fuzzy
-#| msgid "Account name"
 msgid "Script name"
-msgstr "账户名称"
+msgstr "脚本名称"
 
-#: ops/models/script_schedule.py:24
+#: ops/models/script_schedule.py:16 users/models/authentication.py:74
+msgid "Failed"
+msgstr "失败"
+
+#: ops/models/script_schedule.py:16
+msgid "Runing"
+msgstr "运行中"
+
+#: ops/models/script_schedule.py:26
 msgid "Schedule log"
 msgstr "调度日志"
 
@@ -2376,7 +2383,7 @@ msgstr "执行历史"
 #: ops/templates/ops/adhoc_detail.html:72
 #: ops/templates/ops/adhoc_detail.html:77
 #: ops/templates/ops/command_execution_list.html:61
-#: ops/templates/ops/task_adhoc.html:61
+#: ops/templates/ops/script_list.html:29 ops/templates/ops/task_adhoc.html:61
 msgid "Run as"
 msgstr "运行用户"
 
@@ -2493,9 +2500,11 @@ msgstr ""
 msgid "Finished"
 msgstr "结束"
 
-#: ops/templates/ops/salt_list.html:29 ops/templates/ops/script_list.html:29
-#, fuzzy
-#| msgid "Username"
+#: ops/templates/ops/salt_list.html:20 ops/templates/ops/script_list.html:20
+msgid "Create Task"
+msgstr "创建任务"
+
+#: ops/templates/ops/salt_list.html:29
 msgid "User name"
 msgstr "用户名"
 
@@ -2510,12 +2519,6 @@ msgstr "执行结果"
 #: ops/templates/ops/script_create_update.html:30
 msgid "script"
 msgstr "脚本"
-
-
-#: ops/templates/ops/script_list.html:20
-#: ops/templates/ops/salt_list.html:20
-msgid "Create Task"
-msgstr "创建任务"
 
 #: ops/templates/ops/task_adhoc.html:19 ops/templates/ops/task_detail.html:20
 #: ops/templates/ops/task_history.html:19 ops/views/adhoc.py:75
@@ -2576,7 +2579,9 @@ msgstr "更新任务内容: {}"
 msgid "Ops"
 msgstr "作业中心"
 
-#: ops/views/adhoc.py:50
+#: ops/views/adhoc.py:50 templates/_nav.html:66 templates/_nav.html:77
+#: templates/_nav.html:88 templates/_nav_user.html:18
+#: templates/_nav_user.html:27 templates/_nav_user.html:38
 msgid "Task list"
 msgstr "任务列表"
 
@@ -2599,7 +2604,7 @@ msgstr "Ansible 管理"
 
 #: ops/views/script.py:55
 msgid "Create Script"
-msgstr "创建组织"
+msgstr "创建脚本"
 
 #: orgs/mixins.py:77 orgs/models.py:24
 msgid "Organization"
@@ -2865,14 +2870,8 @@ msgstr "终端管理"
 msgid "Job Center"
 msgstr "作业中心"
 
-#: templates/_nav.html:66 templates/_nav.html:77 templates/_nav.html:88
-#: templates/_nav_user.html:18 templates/_nav_user.html:27
-#: templates/_nav_user.html:38
-msgid "Task List"
-msgstr "任务列表"
-
 #: templates/_nav.html:68 templates/_nav_user.html:19
-msgid "Job List"
+msgid "Script manager"
 msgstr "脚本管理"
 
 #: templates/_nav.html:74 templates/_nav_user.html:24
@@ -2880,15 +2879,15 @@ msgid "Dep Center"
 msgstr "部署中心"
 
 #: templates/_nav.html:78 templates/_nav_user.html:28
-msgid "Green List"
+msgid "Green list"
 msgstr "蓝绿发布"
 
 #: templates/_nav.html:79 templates/_nav_user.html:29
-msgid "Gray List"
+msgid "Gray list"
 msgstr "灰度发布"
 
 #: templates/_nav.html:80 templates/_nav_user.html:30
-msgid "Rollback List"
+msgid "Rollback list"
 msgstr "秒级回滚"
 
 #: templates/_nav.html:85 templates/_nav_user.html:35
@@ -3506,10 +3505,6 @@ msgstr "用户名不存在"
 #: users/models/authentication.py:69
 msgid "Password expired"
 msgstr "密码过期"
-
-#: users/models/authentication.py:74
-msgid "Failed"
-msgstr "失败"
 
 #: users/models/authentication.py:78
 msgid "Login type"
@@ -4371,329 +4366,3 @@ msgstr "MFA 解绑成功"
 #: users/views/user.py:586
 msgid "MFA disable success, return login page"
 msgstr "MFA 解绑成功，返回登录页面"
-
-#~ msgid " Beijing Duizhan Tech, Inc. "
-#~ msgstr " 北京堆栈科技有限公司 "
-
-#~ msgid "Help"
-#~ msgstr "帮助"
-
-#~ msgid "Commercial support"
-#~ msgstr "商业支持"
-
-#~ msgid ""
-#~ "The world's first fully open source fortress, using the GNU GPL v2.0 open "
-#~ "source protocol, is a professional operation and maintenance audit system "
-#~ "in compliance with 4A."
-#~ msgstr ""
-#~ "全球首款完全开源的堡垒机，使用GNU GPL v2.0开源协议，是符合 4A 的专业运维审"
-#~ "计系统。"
-
-#~ msgid ""
-#~ "Developed using Python/Django, following the Web 2.0 specification and "
-#~ "equipped with industry-leading Web Terminal solutions, with beautiful "
-#~ "interactive interface and good user experience."
-#~ msgstr ""
-#~ "使用Python / Django 进行开发，遵循 Web 2.0 规范，配备了业界领先的 Web "
-#~ "Terminal 解决方案，交互界面美观、用户体验好。"
-
-#~ msgid ""
-#~ "Distributed architecture is adopted to support multi-machine room "
-#~ "deployment across regions, central node provides API, and each machine "
-#~ "room deploys login node, which can be extended horizontally and without "
-#~ "concurrent access restrictions."
-#~ msgstr ""
-#~ "采纳分布式架构，支持多机房跨区域部署，中心节点提供 API，各机房部署登录节"
-#~ "点，可横向扩展、无并发访问限制。"
-
-#~ msgid ""
-#~ "glance is an open source desktop system developed using Python and Django "
-#~ "that helps Internet businesses with efficient users, assets, permissions, "
-#~ "and audit management"
-#~ msgstr ""
-#~ "glance是一款使用Python, Django开发的开源跳板机系统, 助力互联网企业高效 用"
-#~ "户、资产、权限、审计 管理"
-
-#~ msgid ""
-#~ "We are from all over the world, we have great admiration and worship for "
-#~ "the spirit of open source, we have endless pursuit for perfection, "
-#~ "neatness and elegance"
-#~ msgstr ""
-#~ "我们自五湖四海，我们对开源精神无比敬仰和崇拜，我们对完美、整洁、优雅 无止"
-#~ "境的追求"
-
-#~ msgid ""
-#~ "We focus on automatic operation and maintenance, and strive to build an "
-#~ "easy-to-use, stable, safe and automatic board hopping machine, which is "
-#~ "our unremitting pursuit and power"
-#~ msgstr ""
-#~ "专注自动化运维，努力打造 易用、稳定、安全、自动化 的跳板机, 这是我们的不懈"
-#~ "的追求和动力"
-
-#~ msgid "Account unavailable"
-#~ msgstr "账户无效"
-
-#~ msgid "Select account"
-#~ msgstr "选择账户"
-
-#~ msgid "Select regions"
-#~ msgstr "选择地域"
-
-#~ msgid "Select instances"
-#~ msgstr "选择实例"
-
-#~ msgid "Select node"
-#~ msgstr "选择节点"
-
-#~ msgid "Select admins"
-#~ msgstr "选择管理员"
-
-#~ msgid "Cloud center"
-#~ msgstr "云管中心"
-
-#~ msgid "Available"
-#~ msgstr "有效"
-
-#~ msgid "Unavailable"
-#~ msgstr "无效"
-
-#~ msgid "Provider"
-#~ msgstr "云服务商"
-
-#~ msgid "Regions"
-#~ msgstr "地域"
-
-#~ msgid "Instances"
-#~ msgstr "实例"
-
-#~ msgid "Date last sync"
-#~ msgstr "最后同步日期"
-
-#~ msgid "Sync instance task"
-#~ msgstr "同步实例任务"
-
-#~ msgid "Succeed"
-#~ msgstr "成功"
-
-#~ msgid "Date sync"
-#~ msgstr "同步日期"
-
-#~ msgid "Exist"
-#~ msgstr "存在"
-
-#~ msgid "Sync task"
-#~ msgstr "同步任务"
-
-#~ msgid "Sync instance task history"
-#~ msgstr "同步实例任务历史"
-
-#~ msgid "Instance"
-#~ msgstr "实例"
-
-#~ msgid "Aliyun"
-#~ msgstr "阿里云"
-
-#~ msgid "AWS (China)"
-#~ msgstr "AWS (中国)"
-
-#~ msgid "AWS (International)"
-#~ msgstr "AWS (国际)"
-
-#~ msgid "Qcloud"
-#~ msgstr "腾讯云"
-
-#~ msgid "Account detail"
-#~ msgstr "账户详情"
-
-#~ msgid "Create account"
-#~ msgstr "创建账户"
-
-#~ msgid "Loading..."
-#~ msgstr "加载中..."
-
-#~ msgid "Load failed"
-#~ msgstr "加载失败"
-
-#~ msgid "Sync task detail"
-#~ msgstr "同步任务详情"
-
-#~ msgid "Sync task history"
-#~ msgstr "同步历史列表"
-
-#~ msgid "Sync instance list"
-#~ msgstr "同步实例列表"
-
-#~ msgid "Total count"
-#~ msgstr "总数"
-
-#~ msgid "Succeed count"
-#~ msgstr "成功"
-
-#~ msgid "Failed count"
-#~ msgstr "失败"
-
-#~ msgid "Exist count"
-#~ msgstr "存在"
-
-#~ msgid "Create sync instance task"
-#~ msgstr "创建同步实例任务"
-
-#~ msgid "Run count"
-#~ msgstr "执行次数"
-
-#~ msgid "Instance count"
-#~ msgstr "实例个数"
-
-#~ msgid "Sync success"
-#~ msgstr "同步成功"
-
-#~ msgid "Update account"
-#~ msgstr "更新账户"
-
-#~ msgid "Sync instance task list"
-#~ msgstr "同步实例任务列表"
-
-#~ msgid "Create sync Instance task"
-#~ msgstr "创建同步实例任务"
-
-#~ msgid "Admin"
-#~ msgstr "管理员"
-
-#~ msgid "Organizations"
-#~ msgstr "组织管理"
-
-#~ msgid "Org detail"
-#~ msgstr "组织详情"
-
-#~ msgid "Add admin"
-#~ msgstr "添加管理员"
-
-#~ msgid "Create organization "
-#~ msgstr "创建组织"
-
-#~ msgid "Org"
-#~ msgstr "组织"
-
-#~ msgid "Org list"
-#~ msgstr "组织列表"
-
-#~ msgid "Orgs"
-#~ msgstr "组织"
-
-#~ msgid "Update org"
-#~ msgstr "更新组织"
-
-#~ msgid "Asset has been disabled, skip: {}"
-#~ msgstr "资产被禁用，跳过：{}"
-
-#~ msgid "Asset may not be support ansible, skip: {}"
-#~ msgstr "资产或许不支持ansible, 跳过: {}"
-
-#~ msgid "No assets, task stop"
-#~ msgstr "没有匹配到资产，结束任务"
-
-#, fuzzy
-#~| msgid "Validity"
-#~ msgid "Valid"
-#~ msgstr "账户状态"
-
-#~ msgid "You can't update the root node name"
-#~ msgstr "不能修改根节点名称"
-
-#~ msgid "Update assets hardware info period"
-#~ msgstr "定期更新资产硬件信息"
-
-#~ msgid "Date finished"
-#~ msgstr "结束日期"
-
-#, fuzzy
-#~| msgid "Audits"
-#~ msgid "Audit"
-#~ msgstr "日志审计"
-
-#~ msgid "User id"
-#~ msgstr "用户"
-
-#~ msgid "Start execute"
-#~ msgstr "开始执行"
-
-#~ msgid "Start"
-#~ msgstr "开始"
-
-#, fuzzy
-#~| msgid "Update setting successfully"
-#~ msgid "Update setting successfully, please restart program"
-#~ msgstr "更新设置成功"
-
-#~ msgid "User login settings"
-#~ msgstr "用户登录设置"
-
-#~ msgid "Bit"
-#~ msgstr " 位"
-
-#, fuzzy
-#~| msgid "Delete succeed"
-#~ msgid "Delete success"
-#~ msgstr "删除成功"
-
-#~ msgid ""
-#~ "Set terminal storage setting, `default` is the using as default,You can "
-#~ "set other storage and some terminal using"
-#~ msgstr "设置终端命令存储，default是默认用的存储方式"
-
-#~ msgid ""
-#~ "Set replay storage setting, `default` is the using as default,You can set "
-#~ "other storage and some terminal using"
-#~ msgstr "设置终端录像存储，default是默认用的存储方式"
-
-#~ msgid "Sync instance task detail"
-#~ msgstr "同步实例任务详情"
-
-#~ msgid "Sync task instance"
-#~ msgstr "同步实例列表"
-
-#~ msgid "Sync instance task instance"
-#~ msgstr "同步实例任务实例"
-
-#~ msgid "Get sync task error"
-#~ msgstr "获取同步任务"
-
-#~ msgid ""
-#~ "Are you sure to remove authentication information for the system user ?"
-#~ msgstr "你确定清除该系统用户的认证信息吗 ?"
-
-#~ msgid "Clear auth"
-#~ msgstr "清除认证信息"
-
-#~ msgid "success"
-#~ msgstr "成功"
-
-#~ msgid "Task has been send, Go to ops task list seen result"
-#~ msgstr "任务已下发，查看ops任务列表"
-
-#~ msgid "Task has been send, seen left assets status"
-#~ msgstr "任务已下发，查看左侧资产状态"
-
-#~ msgid "OK"
-#~ msgstr "完成"
-
-#~ msgid "Update MFA settings"
-#~ msgstr "更改MFA设置"
-
-#~ msgid "MFA code invalid"
-#~ msgstr "MFA码认证失败"
-
-#~ msgid "Chinese"
-#~ msgstr "中文"
-
-#~ msgid "* required Must set exact system platform, Windows, Linux ..."
-#~ msgstr "* required 必须准确设置操作系统平台，如Windows, Linux ..."
-
-#~ msgid "Unblock user successfully. "
-#~ msgstr "解除登录限制成功"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
-
-#~ msgid "MFA setting"
-#~ msgstr "MFA 设置"
